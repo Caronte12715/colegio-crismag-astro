@@ -1,7 +1,5 @@
 ---
-// CAMBIO 1: Usamos la ruta relativa correcta (subir un nivel y entrar a styles)
 import '../styles/style.css';
-
 const { titulo } = Astro.props;
 ---
 
@@ -11,9 +9,7 @@ const { titulo } = Astro.props;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{titulo} | Colegio Cristiano Profa. Martha Garay de Castillo</title>
-    <meta name="description" content="Formamos líderes con excelencia académica y valores cristianos en El Salvador.">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Nunito:wght@700&display=swap" rel="stylesheet">
@@ -23,15 +19,12 @@ const { titulo } = Astro.props;
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
-    
     <header class="header">
         <nav class="nav contenedor">
             <a href="/" class="logo-enlace">
                 <img src="/images/logo.png" alt="Logo del Colegio" class="logo-img">
             </a>
-            <button class="nav-toggle" aria-label="Abrir menú">
-                <i class="fas fa-bars"></i>
-            </button>
+            <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
             <ul class="nav-menu">
                 <li><a href="/">Inicio</a></li>
                 <li><a href="/quienes-somos">Nosotros</a></li>
@@ -54,12 +47,9 @@ const { titulo } = Astro.props;
             </div>
         </div>
     </footer>
-
     <a href="#" id="btn-volver-arriba"><i class="fas fa-arrow-up"></i></a>
-
     <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
-    
     <script is:inline src="/main.js"></script>
 </body>
 </html>
