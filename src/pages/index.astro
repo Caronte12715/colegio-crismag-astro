@@ -1,16 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// ACTUALIZACIÓN: Usamos la forma moderna "import.meta.glob"
-// "eager: true" significa que cargue los datos inmediatamente
+// LÓGICA PARA CARGAR NOTICIAS AUTOMÁTICAMENTE
+// Busca todos los archivos .md en la carpeta noticias
 const noticias = Object.values(import.meta.glob('./noticias/*.md', { eager: true }));
 
-// Ordenamos las noticias por fecha
+// Ordenamos las noticias por fecha (de la más nueva a la más vieja)
 const noticiasOrdenadas = noticias.sort((a, b) => {
     return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
 });
 
-const ultimasNoticias = noticiasOrdenadas.slice(0, 3);
+// Mostramos las últimas 4 noticias en el inicio
+const ultimasNoticias = noticiasOrdenadas.slice(0, 4);
 ---
 
 <Layout titulo="Inicio">
@@ -30,11 +31,12 @@ const ultimasNoticias = noticiasOrdenadas.slice(0, 3);
             <div class="bienvenida-grid">
                 <div class="bienvenida-texto" data-aos="fade-right">
                     <h2>Bienvenidos a Nuestra Familia Educativa</h2>
-                    <p>En el Colegio Cristiano Profa. Martha Garay de Castillo, nos dedicamos a ofrecer una educación integral que va más allá de lo académico.</p>
+                    <p>En el Colegio Cristiano Profa. Martha Garay de Castillo, nos dedicamos a ofrecer una educación integral que va más allá de lo académico. Nuestra misión es fomentar el desarrollo intelectual, emocional y social de cada estudiante, todo ello fundamentado en sólidos valores cristianos.</p>
+                    <p>Creemos en un ambiente de aprendizaje seguro, inclusivo y estimulante, donde la curiosidad es celebrada y cada alumno es motivado a descubrir y alcanzar su máximo potencial. Somos más que un colegio; somos una comunidad comprometida con la formación de los líderes del mañana.</p>
                     <a href="/quienes-somos" class="boton-secundario">Conoce Nuestra Filosofía</a>
                 </div>
                 <div class="bienvenida-imagen" data-aos="fade-left">
-                    <img src="/images/foto-bienvenida.jpg" alt="Estudiantes sonriendo">
+                    <img src="/images/foto-bienvenida.jpg" alt="Estudiantes sonriendo en el patio del colegio">
                 </div>
             </div>
         </section>
@@ -43,11 +45,11 @@ const ultimasNoticias = noticiasOrdenadas.slice(0, 3);
             <div class="contenedor">
                 <h2 data-aos="fade-down">Nuestra Oferta Educativa</h2>
                 <div class="tarjetas-grid">
-                    <div class="tarjeta" data-aos="fade-up"><img src="/images/parvularia.jpg" alt="Parvularia"><div class="tarjeta-contenido"><h3>Parvularia</h3><p>Una base sólida y divertida.</p><a href="/parvularia" class="boton-secundario">Ver Más</a></div></div>
-                    <div class="tarjeta" data-aos="fade-up" data-aos-delay="150"><img src="/images/primer-ciclo.jpg" alt="Primer Ciclo"><div class="tarjeta-contenido"><h3>Primer Ciclo</h3><p>Afianzamos conocimientos.</p><a href="/primer-ciclo" class="boton-secundario">Ver Más</a></div></div>
-                    <div class="tarjeta" data-aos="fade-up" data-aos-delay="300"><img src="/images/segundo-ciclo.jpg" alt="Segundo Ciclo"><div class="tarjeta-contenido"><h3>Segundo Ciclo</h3><p>Pensamiento crítico.</p><a href="/segundo-ciclo" class="boton-secundario">Ver Más</a></div></div>
-                    <div class="tarjeta" data-aos="fade-up" data-aos-delay="450"><img src="/images/tercer-ciclo.jpg" alt="Tercer Ciclo"><div class="tarjeta-contenido"><h3>Tercer Ciclo</h3><p>Formación básica.</p><a href="/tercer-ciclo" class="boton-secundario">Ver Más</a></div></div>
-                    <div class="tarjeta" data-aos="fade-up" data-aos-delay="600"><img src="/images/bachillerato.jpg" alt="Bachillerato"><div class="tarjeta-contenido"><h3>Bachillerato</h3><p>Rumbo a la universidad.</p><a href="/bachillerato" class="boton-secundario">Ver Más</a></div></div>
+                    <div class="tarjeta" data-aos="fade-up"><img src="/images/parvularia.jpg" alt="Niños en parvularia"><div class="tarjeta-contenido"><h3>Parvularia</h3><p>Una base sólida y divertida para los más pequeños, fomentando la creatividad y el desarrollo temprano.</p><a href="/parvularia" class="boton-secundario">Ver Más</a></div></div>
+                    <div class="tarjeta" data-aos="fade-up" data-aos-delay="150"><img src="/images/primer-ciclo.jpg" alt="Estudiantes de primer ciclo"><div class="tarjeta-contenido"><h3>Primer Ciclo</h3><p>Afianzamos los conocimientos fundamentales de 1° a 3° grado, construyendo habilidades clave.</p><a href="/primer-ciclo" class="boton-secundario">Ver Más</a></div></div>
+                    <div class="tarjeta" data-aos="fade-up" data-aos-delay="300"><img src="/images/segundo-ciclo.jpg" alt="Estudiantes de segundo ciclo"><div class="tarjeta-contenido"><h3>Segundo Ciclo</h3><p>Desarrollamos el pensamiento crítico y la autonomía en estudiantes de 4° a 6° grado.</p><a href="/segundo-ciclo" class="boton-secundario">Ver Más</a></div></div>
+                    <div class="tarjeta" data-aos="fade-up" data-aos-delay="450"><img src="/images/tercer-ciclo.jpg" alt="Jóvenes de tercer ciclo"><div class="tarjeta-contenido"><h3>Tercer Ciclo</h3><p>Consolidamos la formación básica de 7° a 9° grado, preparando a los jóvenes para la educación media.</p><a href="/tercer-ciclo" class="boton-secundario">Ver Más</a></div></div>
+                    <div class="tarjeta" data-aos="fade-up" data-aos-delay="600"><img src="/images/bachillerato.jpg" alt="Estudiantes de Bachillerato"><div class="tarjeta-contenido"><h3>Bachillerato</h3><p>Preparamos a los jóvenes para la universidad y el mundo profesional con un enfoque especializado y riguroso.</p><a href="/bachillerato" class="boton-secundario">Ver Más</a></div></div>
                 </div>
             </div>
         </section>
@@ -56,7 +58,7 @@ const ultimasNoticias = noticiasOrdenadas.slice(0, 3);
             <h2 data-aos="fade-down">Últimas Noticias y Eventos</h2>
             <div class="tarjetas-grid">
                 
-                {ultimasNoticias.length === 0 && <p>No hay noticias publicadas aún.</p>}
+                {ultimasNoticias.length === 0 && <p style="text-align:center; width:100%;">No hay noticias publicadas aún.</p>}
 
                 {ultimasNoticias.map((noticia, index) => (
                     <article class="tarjeta-noticia" data-aos="fade-up" data-aos-delay={index * 150}>
@@ -70,6 +72,7 @@ const ultimasNoticias = noticiasOrdenadas.slice(0, 3);
                         </a>
                     </article>
                 ))}
+
             </div>
         </section>
         
@@ -79,9 +82,9 @@ const ultimasNoticias = noticiasOrdenadas.slice(0, 3);
                 <div class="grid-contacto-index">
                     <div class="info-contacto" data-aos="fade-up">
                         <h4>Información de Contacto</h4>
-                        <p><i class="fa-solid fa-phone"></i><a href="tel:+50326602347">2660-2347</a></p>
+                        <p><i class="fa-solid fa-phone"></i><a href="tel:+50326602347">2660-2347</a> / <a href="tel:+50326622651">2662-2651</a><br><a href="tel:+50377295458">7729-5458</a> / <a href="tel:+50375237853">7523-7853</a></p>
                         <p><i class="fa-solid fa-envelope"></i><a href="mailto:colegiocrismag2025@gmail.com">colegiocrismag2025@gmail.com</a></p>
-                        <p><i class="fa-solid fa-location-dot"></i> San Miguel, El Salvador</p>
+                        <p><i class="fa-solid fa-location-dot"></i> 1a. Av. Sur entre 19 y 21 calle pte. #1005, Barrio San Nicolas, San Miguel, El Salvador</p>
                     </div>
                     
                     <form action="https://formspree.io/f/xjkoqlbq" method="POST" class="formulario-contacto" data-aos="fade-up" data-aos-delay="200">
@@ -93,7 +96,9 @@ const ultimasNoticias = noticiasOrdenadas.slice(0, 3);
                     </form>
                     
                     <div class="mapa-contacto-index" data-aos="fade-up" data-aos-delay="400">
-                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3880.0694640916936!2d-88.17604549999999!3d13.469815600000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7b2b9adc829661%3A0x573e8f448527d956!2sColegio%20Cristiano%20Profa.%20Martha%20Garay%20de%20Castillo!5e0!3m2!1ses-419!2ssv!4v1755722869930!5m2!1ses-419!2ssv" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3880.0694640916936!2d-88.17604549999999!3d13.469815600000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7b2b9adc829661%3A0x573e8f448527d956!2sColegio%20Cristiano%20Profa.%20Martha%20Garay%20de%20Castillo!5e0!3m2!1ses-419!2ssv!4v1755722869930!5m2!1ses-419!2ssv" 
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
                 </div>
             </div>
