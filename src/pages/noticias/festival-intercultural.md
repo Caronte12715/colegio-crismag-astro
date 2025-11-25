@@ -2,7 +2,8 @@
 layout: ../../layouts/NoticiaLayout.astro
 title: "Festival Intercultural Suramericano"
 date: "2025-10-13"
-image: "/images/festival-suramerica.jpg"
+image: "/images/noticia-festival.jpg"
+banner: "/images/noticia-festival-grande.jpg"
 description: "Un viaje por las culturas, comidas y costumbres de Suramérica."
 ---
 
