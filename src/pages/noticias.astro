@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Traemos TODAS las noticias
+const noticias = Object.values(import.meta.glob('./noticias/*.md', { eager: true }));
+
+// Las ordenamos por fecha
+const noticiasOrdenadas = noticias.sort((a, b) => {
+    return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
+});
+---
+
+<Layout titulo="Noticias y Eventos">
+    <main class="contenedor seccion">
+        <h1 style="text-align: center; margin-bottom: 2rem;">Noticias y Actividades</h1>
+        <p style="text-align: center; max-width: 600px; margin: 0 auto 3rem auto;">
+            Mantente al día con todo lo que sucede en el Colegio Crismag.
+        </p>
+
+        <div class="tarjetas-grid">
+            {noticiasOrdenadas.map((noticia) => (
+                <article class="tarjeta-noticia">
+                    <a href={noticia.url} class="tarjeta-enlace">
+                        <img src={noticia.frontmatter.image} alt={noticia.frontmatter.title} />
+                        <div class="tarjeta-contenido">
+                            <p class="fecha">{noticia.frontmatter.date}</p>
+                            <h4>{noticia.frontmatter.title}</h4>
+                            <p>{noticia.frontmatter.description}</p>
+                        </div>
+                    </a>
+                </article>
+            ))}
+        </div>
+    </main>
+</Layout>

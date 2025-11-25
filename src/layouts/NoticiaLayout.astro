@@ -1,0 +1,30 @@
+---
+import Layout from './Layout.astro';
+
+// Extraemos los datos del archivo .md (titulo, fecha, imagen)
+const { frontmatter } = Astro.props;
+---
+
+<Layout titulo={frontmatter.title}>
+    <main class="contenedor seccion-noticia-detalle">
+        <article class="contenido-noticia">
+            <header style="text-align: center; margin-bottom: 2rem;">
+                <h1 style="font-size: 2.5rem; color: var(--color-primario);">{frontmatter.title}</h1>
+                <p style="color: #666; font-style: italic;">Publicado el: {frontmatter.date}</p>
+                <img 
+                    src={frontmatter.image} 
+                    alt={frontmatter.title} 
+                    style="width: 100%; max-height: 500px; object-fit: cover; border-radius: 10px; margin-top: 1rem;"
+                >
+            </header>
+
+            <div class="texto-articulo" style="line-height: 1.8; font-size: 1.1rem;">
+                <slot />
+            </div>
+
+            <div style="margin-top: 3rem; text-align: center;">
+                <a href="/noticias" class="boton-secundario">← Volver a Noticias</a>
+            </div>
+        </article>
+    </main>
+</Layout>

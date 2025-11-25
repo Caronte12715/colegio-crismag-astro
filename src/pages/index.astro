@@ -1,16 +1,102 @@
 ---
+import Layout from '../layouts/Layout.astro';
 
+// ACTUALIZACIÓN: Usamos la forma moderna "import.meta.glob"
+// "eager: true" significa que cargue los datos inmediatamente
+const noticias = Object.values(import.meta.glob('./noticias/*.md', { eager: true }));
+
+// Ordenamos las noticias por fecha
+const noticiasOrdenadas = noticias.sort((a, b) => {
+    return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
+});
+
+const ultimasNoticias = noticiasOrdenadas.slice(0, 3);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout titulo="Inicio">
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-contenido contenedor">
+                <h1 class="animate__animated animate__fadeInDown">Colegio Cristiano Profa. Martha Garay de Castillo</h1>
+                <p class="animate__animated animate__fadeInUp">
+                    Educación que inspira futuros brillantes, formando líderes con valores y excelencia académica.
+                    <span class="cita-hero">"Y vosotros, padres, no provoquéis a ira a vuestros hijos, sino criadlos en disciplina y amonestación del Señor." — Efesios 6:4</span>
+                </p>
+                <a href="/admisiones" class="boton animate__animated animate__pulse animate__infinite">Inscripciones Abiertas</a>
+            </div>
+        </section>
+        
+        <section id="bienvenida" class="seccion contenedor">
+            <div class="bienvenida-grid">
+                <div class="bienvenida-texto" data-aos="fade-right">
+                    <h2>Bienvenidos a Nuestra Familia Educativa</h2>
+                    <p>En el Colegio Cristiano Profa. Martha Garay de Castillo, nos dedicamos a ofrecer una educación integral que va más allá de lo académico.</p>
+                    <a href="/quienes-somos" class="boton-secundario">Conoce Nuestra Filosofía</a>
+                </div>
+                <div class="bienvenida-imagen" data-aos="fade-left">
+                    <img src="/images/foto-bienvenida.jpg" alt="Estudiantes sonriendo">
+                </div>
+            </div>
+        </section>
+
+        <section id="oferta-educativa" class="seccion">
+            <div class="contenedor">
+                <h2 data-aos="fade-down">Nuestra Oferta Educativa</h2>
+                <div class="tarjetas-grid">
+                    <div class="tarjeta" data-aos="fade-up"><img src="/images/parvularia.jpg" alt="Parvularia"><div class="tarjeta-contenido"><h3>Parvularia</h3><p>Una base sólida y divertida.</p><a href="/parvularia" class="boton-secundario">Ver Más</a></div></div>
+                    <div class="tarjeta" data-aos="fade-up" data-aos-delay="150"><img src="/images/primer-ciclo.jpg" alt="Primer Ciclo"><div class="tarjeta-contenido"><h3>Primer Ciclo</h3><p>Afianzamos conocimientos.</p><a href="/primer-ciclo" class="boton-secundario">Ver Más</a></div></div>
+                    <div class="tarjeta" data-aos="fade-up" data-aos-delay="300"><img src="/images/segundo-ciclo.jpg" alt="Segundo Ciclo"><div class="tarjeta-contenido"><h3>Segundo Ciclo</h3><p>Pensamiento crítico.</p><a href="/segundo-ciclo" class="boton-secundario">Ver Más</a></div></div>
+                    <div class="tarjeta" data-aos="fade-up" data-aos-delay="450"><img src="/images/tercer-ciclo.jpg" alt="Tercer Ciclo"><div class="tarjeta-contenido"><h3>Tercer Ciclo</h3><p>Formación básica.</p><a href="/tercer-ciclo" class="boton-secundario">Ver Más</a></div></div>
+                    <div class="tarjeta" data-aos="fade-up" data-aos-delay="600"><img src="/images/bachillerato.jpg" alt="Bachillerato"><div class="tarjeta-contenido"><h3>Bachillerato</h3><p>Rumbo a la universidad.</p><a href="/bachillerato" class="boton-secundario">Ver Más</a></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="noticias" class="seccion contenedor">
+            <h2 data-aos="fade-down">Últimas Noticias y Eventos</h2>
+            <div class="tarjetas-grid">
+                
+                {ultimasNoticias.length === 0 && <p>No hay noticias publicadas aún.</p>}
+
+                {ultimasNoticias.map((noticia, index) => (
+                    <article class="tarjeta-noticia" data-aos="fade-up" data-aos-delay={index * 150}>
+                        <a href={noticia.url} class="tarjeta-enlace">
+                            <img src={noticia.frontmatter.image} alt={noticia.frontmatter.title} />
+                            <div class="tarjeta-contenido">
+                                <p class="fecha">{noticia.frontmatter.date}</p>
+                                <h4>{noticia.frontmatter.title}</h4>
+                                <p>{noticia.frontmatter.description}</p>
+                            </div>
+                        </a>
+                    </article>
+                ))}
+            </div>
+        </section>
+        
+        <section id="contacto" class="seccion seccion-oscura">
+            <div class="contenedor">
+                <h2 data-aos="fade-down">Contáctanos y Visítanos</h2>
+                <div class="grid-contacto-index">
+                    <div class="info-contacto" data-aos="fade-up">
+                        <h4>Información de Contacto</h4>
+                        <p><i class="fa-solid fa-phone"></i><a href="tel:+50326602347">2660-2347</a></p>
+                        <p><i class="fa-solid fa-envelope"></i><a href="mailto:colegiocrismag2025@gmail.com">colegiocrismag2025@gmail.com</a></p>
+                        <p><i class="fa-solid fa-location-dot"></i> San Miguel, El Salvador</p>
+                    </div>
+                    
+                    <form action="https://formspree.io/f/xjkoqlbq" method="POST" class="formulario-contacto" data-aos="fade-up" data-aos-delay="200">
+                        <h4>Envíanos un Mensaje</h4>
+                        <input type="text" name="Nombre" placeholder="Tu Nombre" required>
+                        <input type="email" name="Correo" placeholder="Tu Correo Electrónico" required>
+                        <textarea name="Mensaje" placeholder="Tu Mensaje" rows="5" required></textarea>
+                        <button type="submit" class="boton">Enviar Mensaje</button>
+                    </form>
+                    
+                    <div class="mapa-contacto-index" data-aos="fade-up" data-aos-delay="400">
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3880.0694640916936!2d-88.17604549999999!3d13.469815600000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7b2b9adc829661%3A0x573e8f448527d956!2sColegio%20Cristiano%20Profa.%20Martha%20Garay%20de%20Castillo!5e0!3m2!1ses-419!2ssv!4v1755722869930!5m2!1ses-419!2ssv" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>
