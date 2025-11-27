@@ -980,3 +980,16 @@ img {
         bottom: 110px !important; /* En celular lo subimos un poquito más */
     }
 }
+
+/* --- CORRECCIÓN LIGHTGALLERY CENTRADO --- */
+.lg-outer .lg-img-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+}
+
+.lg-outer .lg-object {
+    max-height: 90vh !important; /* Evita que sea más alta que la pantalla */
+    margin: auto !important;     /* Centrado automático */
+}

@@ -8,8 +8,12 @@ const { titulo } = Astro.props;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{titulo} | Colegio Cristiano Profa. Martha Garay de Castillo</title>
+    
+    <title>{titulo} | Colegio Crismag - Profa. Martha Garay de Castillo</title>
+    <meta name="description" content="Bienvenidos al Colegio Crismag en San Miguel. Formación cristiana integral desde Parvularia hasta Bachillerato. Excelencia académica y valores.">
+    
     <link rel="icon" href="/images/logo.png" type="image/png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Nunito:wght@700&display=swap" rel="stylesheet">
@@ -22,7 +26,7 @@ const { titulo } = Astro.props;
     <header class="header">
         <nav class="nav contenedor">
             <a href="/" class="logo-enlace">
-                <img src="/images/logo.png" alt="Logo del Colegio" class="logo-img">
+                <img src="/images/logo.png" alt="Logo Colegio Crismag" class="logo-img">
             </a>
             <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
             <ul class="nav-menu">
@@ -40,14 +44,15 @@ const { titulo } = Astro.props;
     <footer class="footer">
         <div class="contenedor">
             <div class="footer-contenido">
-                <p>© 2025 Colegio Cristiano Profa. Martha Garay de Castillo.</p>
+                <p>© 2025 Colegio Crismag - Profa. Martha Garay de Castillo.</p>
                 <div class="redes-sociales">
-                    <a href="https://www.facebook.com/crismag.sanmiguel" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/crismag.sanmiguel" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
         </div>
     </footer>
     <a href="#" id="btn-volver-arriba"><i class="fas fa-arrow-up"></i></a>
+    
     <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
     <script is:inline src="/main.js"></script>

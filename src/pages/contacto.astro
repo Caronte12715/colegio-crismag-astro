@@ -1,71 +1,98 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout titulo="Contacto">
-    <main>
-        <section class="hero-secundario">
-            <div class="hero-contenido contenedor" data-aos="fade-in">
-                <h1>Contáctanos</h1>
-                <p>Estamos aquí para servirte. Encuéntranos o envíanos un mensaje.</p>
-            </div>
-        </section>
+  <main>
+    <section class="hero-secundario">
+      <div class="hero-contenido contenedor" data-aos="fade-in">
+        <h1>Contáctanos</h1>
+        <p>Estamos aquí para servirte. Encuéntranos o envíanos un mensaje.</p>
+      </div>
+    </section>
 
-        <section id="contacto-detallado" class="seccion contenedor">
-            <div class="contacto-grid">
-                
-                <div class="info-detallada" data-aos="fade-right">
-                    <h2>Información de Contacto</h2>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-location-dot"></i>
-                        <div>
-                            <h4>Dirección</h4>
-                            <p>1a. Av. Sur entre 19 y 21 calle pte. #1005, Barrio San Nicolas, San Miguel, El Salvador</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Teléfonos</h4>
-                            <p>
-                                <a href="tel:+50326602347">(+503) 2660-2347</a><br>
-                                <a href="tel:+50326622651">(+503) 2662-2651</a><br>
-                                <a href="tel:+50377295458">(+503) 7729-5458</a><br>
-                                <a href="tel:+50375237853">(+503) 7523-7853</a>
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Correo Electrónico</h4>
-                            <p><a href="mailto:colegiocrismag2025@gmail.com">colegiocrismag2025@gmail.com</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h4>Horarios de Atención</h4>
-                            <p>Lunes a Viernes: 7:30 AM - 4:00 PM</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mapa-contenedor" data-aos="fade-left">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3880.0694640916936!2d-88.17604549999999!3d13.469815600000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7b2b9adc829661%3A0x573e8f448527d956!2sColegio%20Cristiano%20Profa.%20Martha%20Garay%20de%20Castillo!5e0!3m2!1ses-419!2ssv!4v1755722869930!5m2!1ses-419!2ssv" 
-                        width="600" 
-                        height="450" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
+    <section id="contacto-detallado" class="seccion contenedor">
+      <div class="contacto-grid">
+        <div class="info-detallada" data-aos="fade-right">
+          <h2>Información de Contacto</h2>
+
+          <div class="info-item">
+            <i class="fas fa-location-dot"></i>
+            <div>
+              <h4>Dirección</h4>
+              <p>
+                1a. Av. Sur entre 19 y 21 calle pte. #1005, Barrio San Nicolas,
+                San Miguel, El Salvador
+              </p>
             </div>
-        </section>
-    </main>
+          </div>
+
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Teléfonos</h4>
+              <ul style="list-style: none; padding: 0; margin-top: 0.5rem;">
+                <li style="margin-bottom: 0.5rem;">
+                  <a
+                    href="tel:+50326602347"
+                    style="color: var(--color-texto); text-decoration: none;"
+                    >2660-2347</a
+                  > /
+                  <a
+                    href="tel:+50326622651"
+                    style="color: var(--color-texto); text-decoration: none;"
+                    >2662-2651</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="tel:+50377295458"
+                    style="color: var(--color-texto); text-decoration: none;"
+                    >7729-5458</a
+                  > /
+                  <a
+                    href="tel:+50375237853"
+                    style="color: var(--color-texto); text-decoration: none;"
+                    >7523-7853</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Correo Electrónico</h4>
+              <p>
+                <a href="mailto:colegiocrismag2025@gmail.com"
+                  >colegiocrismag2025@gmail.com</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h4>Horarios de Atención</h4>
+              <p>Lunes a Viernes: 7:30 AM - 4:00 PM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mapa-contenedor" data-aos="fade-left">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3880.0694640916936!2d-88.17604549999999!3d13.469815600000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7b2b9adc829661%3A0x573e8f448527d956!2sColegio%20Cristiano%20Profa.%20Martha%20Garay%20de%20Castillo!5e0!3m2!1ses-419!2ssv!4v1755722869930!5m2!1ses-419!2ssv"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
