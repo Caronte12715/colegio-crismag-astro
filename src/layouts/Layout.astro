@@ -2,11 +2,9 @@
 import '../styles/style.css';
 const { titulo } = Astro.props;
 
-// --- AQUÍ ESTÁ LA SOLUCIÓN AL ERROR ---
-// Obtenemos la URL actual para saber en qué página estamos
+// Lógica para saber en qué página estamos (para la barra amarilla)
 const pathname = Astro.url.pathname;
-const currentPath = pathname.slice(1); // Quitamos la primera barra "/"
-// -------------------------------------
+const currentPath = pathname.slice(1); 
 ---
 
 <!DOCTYPE html>
@@ -16,7 +14,7 @@ const currentPath = pathname.slice(1); // Quitamos la primera barra "/"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>{titulo} | Colegio Crismag - Profa. Martha Garay de Castillo</title>
-    <meta name="description" content="Bienvenidos al Colegio Crismag en San Miguel. Formación cristiana integral desde Parvularia hasta Bachillerato. Excelencia académica y valores.">
+    <meta name="description" content="Bienvenidos al Colegio Crismag en San Miguel. Formación cristiana integral desde Parvularia hasta Bachillerato.">
     
     <link rel="icon" href="/images/logo.png" type="image/png">
 

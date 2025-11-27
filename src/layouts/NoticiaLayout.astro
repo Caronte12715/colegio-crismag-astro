@@ -3,8 +3,16 @@ import Layout from './Layout.astro';
 
 const { frontmatter } = Astro.props;
 
-// Lógica de imagen de cabecera
+// 1. Lógica para elegir la foto (Banner grande o Imagen normal)
 const imagenCabecera = frontmatter.banner ? frontmatter.banner : frontmatter.image;
+
+// 2. Función para que la fecha se vea bonita (Ej: 26 de noviembre de 2025)
+const formatearFecha = (fecha) => {
+    if (!fecha) return '';
+    // El 'T12:00:00' evita que por la zona horaria salga un día antes
+    const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(fecha + 'T12:00:00').toLocaleDateString('es-ES', opciones);
+};
 ---
 
 <Layout titulo={frontmatter.title}>
@@ -14,7 +22,10 @@ const imagenCabecera = frontmatter.banner ? frontmatter.banner : frontmatter.ima
         <article class="contenido-noticia">
             <header style="text-align: center; margin-bottom: 2rem;">
                 <h1 style="font-size: 2.5rem; color: var(--color-primario);">{frontmatter.title}</h1>
-                <p style="color: #666; font-style: italic;">Publicado el: {frontmatter.date}</p>
+                
+                <p style="color: #666; font-style: italic;">
+                    Publicado el: {formatearFecha(frontmatter.date)}
+                </p>
                 
                 <img 
                     src={imagenCabecera} 
@@ -35,24 +46,19 @@ const imagenCabecera = frontmatter.banner ? frontmatter.banner : frontmatter.ima
 </Layout>
 
 <script is:inline>
-    // Esperamos a que la página cargue
     document.addEventListener('DOMContentLoaded', () => {
-        // Buscamos el contenedor de la galería
         const galeria = document.querySelector('.galeria-noticia');
-        
         if (galeria && window.lightGallery) {
-            // Inicializamos la galería
             window.lightGallery(galeria, {
-                selector: 'img', // Le decimos que busque directamente las etiquetas <img>
+                selector: 'img',
                 speed: 500,
                 download: false
             });
-
-            // Agregamos un cursor de "lupa" para que la gente sepa que puede dar clic
+            
+            // Pone el cursor de lupa en las fotos
             const imagenes = galeria.querySelectorAll('img');
             imagenes.forEach(img => {
                 img.style.cursor = 'zoom-in';
-                // Truco: LightGallery necesita el atributo data-src para saber qué abrir
                 img.setAttribute('data-src', img.src);
             });
         }

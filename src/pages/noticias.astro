@@ -1,13 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Traemos TODAS las noticias
+// 1. Traemos TODAS las noticias
 const noticias = Object.values(import.meta.glob('./noticias/*.md', { eager: true }));
 
-// Las ordenamos por fecha
+// Ordenamos por fecha
 const noticiasOrdenadas = noticias.sort((a, b) => {
     return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
 });
+
+// 2. Función Formatear Fecha
+const formatearFecha = (fecha) => {
+    if (!fecha) return '';
+    const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(fecha + 'T12:00:00').toLocaleDateString('es-ES', opciones);
+};
 ---
 
 <Layout titulo="Noticias y Eventos">
@@ -18,12 +25,14 @@ const noticiasOrdenadas = noticias.sort((a, b) => {
         </p>
 
         <div class="tarjetas-grid">
+            {noticiasOrdenadas.length === 0 && <p>No hay noticias por el momento.</p>}
+
             {noticiasOrdenadas.map((noticia) => (
                 <article class="tarjeta-noticia">
                     <a href={noticia.url} class="tarjeta-enlace">
                         <img src={noticia.frontmatter.image} alt={noticia.frontmatter.title} />
                         <div class="tarjeta-contenido">
-                            <p class="fecha">{noticia.frontmatter.date}</p>
+                            <p class="fecha">{formatearFecha(noticia.frontmatter.date)}</p>
                             <h4>{noticia.frontmatter.title}</h4>
                             <p>{noticia.frontmatter.description}</p>
                         </div>

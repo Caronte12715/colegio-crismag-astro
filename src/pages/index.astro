@@ -1,17 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// LÓGICA PARA CARGAR NOTICIAS AUTOMÁTICAMENTE
-// Busca todos los archivos .md en la carpeta noticias
+// 1. Lógica de Noticias
 const noticias = Object.values(import.meta.glob('./noticias/*.md', { eager: true }));
 
-// Ordenamos las noticias por fecha (de la más nueva a la más vieja)
+// Ordenar por fecha (más reciente primero)
 const noticiasOrdenadas = noticias.sort((a, b) => {
     return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
 });
 
-// Mostramos las últimas 4 noticias en el inicio
-const ultimasNoticias = noticiasOrdenadas.slice(0, 4);
+// Mostrar solo las últimas 3
+const ultimasNoticias = noticiasOrdenadas.slice(0, 3);
+
+// 2. Función para Formatear Fecha (Ej: 20 de noviembre de 2025)
+const formatearFecha = (fecha) => {
+    if (!fecha) return '';
+    // Agregamos T12:00:00 para evitar que la zona horaria nos reste un día
+    const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(fecha + 'T12:00:00').toLocaleDateString('es-ES', opciones);
+};
 ---
 
 <Layout titulo="Inicio">
@@ -31,7 +38,7 @@ const ultimasNoticias = noticiasOrdenadas.slice(0, 4);
             <div class="bienvenida-grid">
                 <div class="bienvenida-texto" data-aos="fade-right">
                     <h2>Bienvenidos a Nuestra Familia Educativa</h2>
-                    <p>En el Colegio Cristiano Profa. Martha Garay de Castillo, nos dedicamos a ofrecer una educación integral que va más allá de lo académico. Nuestra misión es fomentar el desarrollo intelectual, emocional y social de cada estudiante, todo ello fundamentado en sólidos valores cristianos.</p>
+                    <p>En el **Colegio Crismag** (Profa. Martha Garay de Castillo), nos dedicamos a ofrecer una educación integral que va más allá de lo académico. Nuestra misión es fomentar el desarrollo intelectual, emocional y social de cada estudiante, todo ello fundamentado en sólidos valores cristianos.</p>
                     <p>Creemos en un ambiente de aprendizaje seguro, inclusivo y estimulante, donde la curiosidad es celebrada y cada alumno es motivado a descubrir y alcanzar su máximo potencial. Somos más que un colegio; somos una comunidad comprometida con la formación de los líderes del mañana.</p>
                     <a href="/quienes-somos" class="boton-secundario">Conoce Nuestra Filosofía</a>
                 </div>
@@ -65,14 +72,13 @@ const ultimasNoticias = noticiasOrdenadas.slice(0, 4);
                         <a href={noticia.url} class="tarjeta-enlace">
                             <img src={noticia.frontmatter.image} alt={noticia.frontmatter.title} />
                             <div class="tarjeta-contenido">
-                                <p class="fecha">{noticia.frontmatter.date}</p>
+                                <p class="fecha">{formatearFecha(noticia.frontmatter.date)}</p>
                                 <h4>{noticia.frontmatter.title}</h4>
                                 <p>{noticia.frontmatter.description}</p>
                             </div>
                         </a>
                     </article>
                 ))}
-
             </div>
         </section>
         
@@ -80,24 +86,28 @@ const ultimasNoticias = noticiasOrdenadas.slice(0, 4);
             <div class="contenedor">
                 <h2 data-aos="fade-down">Contáctanos y Visítanos</h2>
                 <div class="grid-contacto-index">
-<div style="margin-bottom: 1rem;">
-    <i class="fa-solid fa-phone" style="color: var(--color-secundario); margin-right: 10px;"></i>
-    <span style="font-weight: bold;">Teléfonos:</span>
-    <ul style="list-style: none; padding-left: 2rem; margin-top: 0.2rem;">
-        <li><a href="tel:+50326602347" style="color: #fff; text-decoration: none;">2660-2347</a> / <a href="tel:+50326622651" style="color: #fff; text-decoration: none;">2662-2651</a></li>
-        <li><a href="tel:+50377295458" style="color: #fff; text-decoration: none;">7729-5458</a> / <a href="tel:+50375237853" style="color: #fff; text-decoration: none;">7523-7853</a></li>
-    </ul>
-</div>
+                    <div class="info-contacto" data-aos="fade-up">
+                        <h4>Información de Contacto</h4>
+                        
+                        <div style="margin-bottom: 1rem;">
+                            <i class="fa-solid fa-phone" style="color: var(--color-secundario); margin-right: 10px;"></i>
+                            <span style="font-weight: bold;">Teléfonos:</span>
+                            <ul style="list-style: none; padding-left: 2rem; margin-top: 0.2rem;">
+                                <li><a href="tel:+50326602347">2660-2347</a> / <a href="tel:+50326622651">2662-2651</a></li>
+                                <li><a href="tel:+50377295458">7729-5458</a> / <a href="tel:+50375237853">7523-7853</a></li>
+                            </ul>
+                        </div>
 
-<div style="margin-bottom: 1rem;">
-    <i class="fa-solid fa-envelope" style="color: var(--color-secundario); margin-right: 10px;"></i>
-    <a href="mailto:colegiocrismag2025@gmail.com" style="color: #fff; text-decoration: none;">colegiocrismag2025@gmail.com</a>
-</div>
+                        <div style="margin-bottom: 1rem;">
+                            <i class="fa-solid fa-envelope" style="color: var(--color-secundario); margin-right: 10px;"></i>
+                            <a href="mailto:colegiocrismag2025@gmail.com">colegiocrismag2025@gmail.com</a>
+                        </div>
 
-<div style="margin-bottom: 1rem;">
-    <i class="fa-solid fa-location-dot" style="color: var(--color-secundario); margin-right: 10px;"></i>
-    <span>1a. Av. Sur entre 19 y 21 calle pte. #1005, Barrio San Nicolas, San Miguel</span>
-</div>
+                        <div style="margin-bottom: 1rem;">
+                            <i class="fa-solid fa-location-dot" style="color: var(--color-secundario); margin-right: 10px;"></i>
+                            <span>1a. Av. Sur entre 19 y 21 calle pte. #1005, Barrio San Nicolas, San Miguel</span>
+                        </div>
+                    </div>
                     
                     <form action="https://formspree.io/f/xjkoqlbq" method="POST" class="formulario-contacto" data-aos="fade-up" data-aos-delay="200">
                         <h4>Envíanos un Mensaje</h4>
@@ -108,9 +118,7 @@ const ultimasNoticias = noticiasOrdenadas.slice(0, 4);
                     </form>
                     
                     <div class="mapa-contacto-index" data-aos="fade-up" data-aos-delay="400">
-                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3880.0694640916936!2d-88.17604549999999!3d13.469815600000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7b2b9adc829661%3A0x573e8f448527d956!2sColegio%20Cristiano%20Profa.%20Martha%20Garay%20de%20Castillo!5e0!3m2!1ses-419!2ssv!4v1755722869930!5m2!1ses-419!2ssv" 
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3880.0694640916936!2d-88.17604549999999!3d13.469815600000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7b2b9adc829661%3A0x573e8f448527d956!2sColegio%20Cristiano%20Profa.%20Martha%20Garay%20de%20Castillo!5e0!3m2!1ses-419!2ssv!4v1755722869930!5m2!1ses-419!2ssv" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/NoticiaLayout.astro
 title: "Graduación de Parvularia 2025"
-date: "2025-11-20"
+date: "2025-11-25"
 image: "/images/graduacion-parvularia.jpg"
 banner: "/images/graduacion-parvularia-banner.jpg"
 description: "Celebramos con alegría el primer gran logro académico de nuestros pequeños gigantes."

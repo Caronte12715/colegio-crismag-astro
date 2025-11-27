@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/NoticiaLayout.astro
 title: "Graduación de 9° Grado y Clausura Escolar"
-date: "2025-11-25"
+date: "2025-11-26"
 image: "/images/graduacion-noveno.jpg"
 banner: "/images/graduacion-noveno-banner.jpg"
 description: "Despedimos un año de éxitos y celebramos el paso de nuestros jóvenes hacia la Educación Media."
