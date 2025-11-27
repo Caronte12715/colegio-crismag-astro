@@ -8,6 +8,7 @@
     --color-fondo-claro: #f8f9fa;
     --fuente-titulos: 'Nunito', sans-serif;
     --fuente-cuerpo: 'Nunito Sans', sans-serif;
+    --fuente-elegante: 'Lora', serif; /* Agregado para noticias */
 }
 
 html {
@@ -15,9 +16,7 @@ html {
     scroll-behavior: smooth;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
     box-sizing: inherit;
 }
 
@@ -34,10 +33,7 @@ body {
     margin: 0 auto;
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
     font-family: var(--fuente-titulos);
     color: var(--color-primario);
     margin-top: 0;
@@ -118,6 +114,7 @@ img {
     color: var(--color-primario);
     font-weight: 700;
     transition: color 0.3s ease;
+    position: relative; /* Agregado para la barra */
 }
 
 .nav-menu li a:hover {
@@ -133,15 +130,23 @@ img {
     cursor: pointer;
 }
 
-.nav-menu .active-link a {
+/* AJUSTE BARRA ACTIVA (Compatible con Astro) */
+.nav-menu a.active {
     color: var(--color-acento);
-    border-bottom: 3px solid var(--color-acento);
-    padding-bottom: 5px;
+}
+.nav-menu a.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 5px;
+    left: 0;
+    background-color: var(--color-acento);
 }
 
 /* --- Sección Hero (Página de Inicio) --- */
 .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-bg.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     height: 90vh;
@@ -187,6 +192,7 @@ img {
     transition: background-color 0.3s ease, transform 0.3s ease;
     border: none;
     cursor: pointer;
+    display: inline-block;
 }
 
 .boton:hover {
@@ -201,6 +207,7 @@ img {
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    display: inline-block;
 }
 
 .boton-secundario:hover {
@@ -214,8 +221,7 @@ img {
     gap: 2rem;
 }
 
-.tarjeta,
-.tarjeta-noticia {
+.tarjeta, .tarjeta-noticia {
     background-color: var(--color-blanco);
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -225,14 +231,12 @@ img {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.tarjeta:hover,
-.tarjeta-noticia:hover {
+.tarjeta:hover, .tarjeta-noticia:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.tarjeta img,
-.tarjeta-noticia img {
+.tarjeta img, .tarjeta-noticia img {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -265,6 +269,14 @@ img {
     margin-bottom: 0.5rem;
 }
 
+/* Enlace completo en tarjeta noticia */
+.tarjeta-enlace {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
 /* --- Sección Bienvenida (Página de Inicio) --- */
 .bienvenida-grid {
     display: grid;
@@ -289,7 +301,7 @@ img {
     box-shadow: 0 10px 30px rgba(0, 51, 102, 0.15);
 }
 
-/* --- Sección Contacto (en Página de Inicio) --- */
+/* --- Sección Contacto --- */
 .grid-contacto-index {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -297,9 +309,7 @@ img {
     align-items: start;
 }
 
-.info-contacto h4,
-.formulario-contacto h4,
-.mapa-contacto-index h4 {
+.info-contacto h4, .formulario-contacto h4, .mapa-contacto-index h4 {
     color: var(--color-blanco);
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
@@ -320,13 +330,23 @@ img {
     margin-top: 5px;
 }
 
+/* === ARREGLO DE TELÉFONOS (NUEVO) === */
+.info-contacto ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.info-contacto ul li {
+    margin-bottom: 5px;
+}
+/* ===================================== */
+
 .formulario-contacto {
     display: flex;
     flex-direction: column;
 }
 
-.formulario-contacto input,
-.formulario-contacto textarea {
+.formulario-contacto input, .formulario-contacto textarea {
     padding: 1rem;
     margin-bottom: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -336,8 +356,7 @@ img {
     color: var(--color-blanco);
 }
 
-.formulario-contacto input::placeholder,
-.formulario-contacto textarea::placeholder {
+.formulario-contacto input::placeholder, .formulario-contacto textarea::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
 
@@ -395,8 +414,7 @@ img {
     align-items: start;
 }
 
-.mision,
-.vision {
+.mision, .vision {
     background-color: var(--color-blanco);
     padding: 2rem;
     border-radius: 10px;
@@ -407,21 +425,18 @@ img {
     top: 0;
 }
 
-.mision:hover,
-.vision:hover {
+.mision:hover, .vision:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 35px rgba(0, 51, 102, 0.15);
     border-top-color: var(--color-acento);
 }
 
-.mision h3,
-.vision h3 {
+.mision h3, .vision h3 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
 }
 
-.mision i,
-.vision i {
+.mision i, .vision i {
     color: var(--color-secundario);
     margin-right: 10px;
 }
@@ -500,8 +515,7 @@ img {
     margin-bottom: 2rem;
 }
 
-.proceso-paso:nth-child(odd),
-.proceso-paso:nth-child(even) {
+.proceso-paso:nth-child(odd), .proceso-paso:nth-child(even) {
     left: 0;
     text-align: left;
     padding-left: 0;
@@ -526,8 +540,7 @@ img {
     box-shadow: 0 0 0 4px var(--color-primario);
 }
 
-.proceso-paso:nth-child(odd) .proceso-numero,
-.proceso-paso:nth-child(even) .proceso-numero {
+.proceso-paso:nth-child(odd) .proceso-numero, .proceso-paso:nth-child(even) .proceso-numero {
     right: auto;
     left: auto;
 }
@@ -626,17 +639,25 @@ img {
     line-height: 1.5;
 }
 
+/* === ARREGLOS DE GALERÍA (NUEVO) === */
 .galeria-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
 }
 
-.galeria-item {
+.galeria-noticia { /* Estilo para las noticias .md */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.galeria-item, .galeria-noticia img {
     cursor: pointer;
 }
 
-.galeria-item img {
+.galeria-item img, .galeria-noticia img {
     width: 100%;
     height: 250px;
     object-fit: cover;
@@ -644,10 +665,23 @@ img {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.galeria-item img:hover {
+.galeria-item img:hover, .galeria-noticia img:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
+
+/* Corrección Centrado LightGallery */
+.lg-outer .lg-img-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+}
+.lg-outer .lg-object {
+    max-height: 90vh !important;
+    margin: auto !important;
+}
+/* ==================================== */
 
 .cta-seccion {
     text-align: center;
@@ -660,14 +694,6 @@ img {
 .cta-seccion p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-}
-
-.tarjeta-noticia a.tarjeta-enlace {
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
 }
 
 .contenedor-articulo {
@@ -700,7 +726,19 @@ img {
     margin-bottom: 2rem;
 }
 
-.articulo-cuerpo p {
+/* Estilo Letra Capital en Noticias */
+.texto-articulo p:first-of-type::first-letter {
+    float: left;
+    font-size: 3.5rem;
+    line-height: 0.8;
+    padding-right: 12px;
+    padding-top: 4px;
+    color: var(--color-primario);
+    font-weight: bold;
+    font-family: var(--fuente-elegante);
+}
+
+.articulo-cuerpo p, .texto-articulo p {
     font-family: 'Lora', serif;
     font-size: 1.2rem;
     line-height: 2;
@@ -788,15 +826,13 @@ img {
     border: 0;
 }
 
-.info-contacto a,
-.info-item a {
+.info-contacto a, .info-item a {
     color: inherit;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.info-contacto a:hover,
-.info-item a:hover {
+.info-contacto a:hover, .info-item a:hover {
     color: var(--color-acento);
     text-decoration: underline;
 }
@@ -829,13 +865,8 @@ img {
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* --- Responsive Design --- */
@@ -931,65 +962,4 @@ img {
     .contacto-grid {
         grid-template-columns: 1fr;
     }
-}
-
-/* Agrega esto al final de style.css */
-.galeria-noticia {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.galeria-noticia img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.galeria-noticia img:hover {
-    transform: scale(1.02);
-}
-
-/* --- ESTILO PARA LA LETRA CAPITAL (DROP CAP) --- */
-
-/* Selecciona la primera letra del primer párrafo dentro del artículo */
-.texto-articulo p:first-of-type::first-letter {
-    float: left;            /* Flota a la izquierda */
-    font-size: 3.5rem;      /* Tamaño muy grande */
-    line-height: 0.8;       /* Altura de línea compacta */
-    padding-right: 12px;    /* Espacio a la derecha */
-    padding-top: 4px;       /* Ajuste superior */
-    color: #004481;         /* Azul oscuro (Color institucional) */
-    font-weight: bold;      /* Negrita */
-    font-family: 'Lora', serif; /* Usamos la fuente elegante si está disponible */
-}
-
-/* --- CORRECCIÓN BOTÓN VOLVER ARRIBA --- */
-#btn-volver-arriba {
-    bottom: 90px !important; /* Lo subimos para que no choque con el footer */
-    z-index: 9999; /* Aseguramos que siempre esté visible y clickeable */
-}
-
-/* Opcional: Ajuste para móviles para que no estorbe */
-@media (max-width: 768px) {
-    #btn-volver-arriba {
-        bottom: 110px !important; /* En celular lo subimos un poquito más */
-    }
-}
-
-/* --- CORRECCIÓN LIGHTGALLERY CENTRADO --- */
-.lg-outer .lg-img-wrap {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    height: 100% !important;
-}
-
-.lg-outer .lg-object {
-    max-height: 90vh !important; /* Evita que sea más alta que la pantalla */
-    margin: auto !important;     /* Centrado automático */
 }

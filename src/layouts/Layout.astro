@@ -1,6 +1,12 @@
 ---
 import '../styles/style.css';
 const { titulo } = Astro.props;
+
+// --- AQUÍ ESTÁ LA SOLUCIÓN AL ERROR ---
+// Obtenemos la URL actual para saber en qué página estamos
+const pathname = Astro.url.pathname;
+const currentPath = pathname.slice(1); // Quitamos la primera barra "/"
+// -------------------------------------
 ---
 
 <!DOCTYPE html>
@@ -23,6 +29,7 @@ const { titulo } = Astro.props;
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
+    
     <header class="header">
         <nav class="nav contenedor">
             <a href="/" class="logo-enlace">
@@ -30,11 +37,11 @@ const { titulo } = Astro.props;
             </a>
             <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
             <ul class="nav-menu">
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/quienes-somos">Nosotros</a></li>
+                <li><a href="/" class={currentPath === "" ? "active" : ""}>Inicio</a></li>
+                <li><a href="/quienes-somos" class={currentPath.startsWith("quienes-somos") ? "active" : ""}>Nosotros</a></li>
                 <li><a href="/#oferta-educativa">Oferta Educativa</a></li>
-                <li><a href="/noticias">Noticias</a></li>
-                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="/noticias" class={currentPath.startsWith("noticias") ? "active" : ""}>Noticias</a></li>
+                <li><a href="/contacto" class={currentPath.startsWith("contacto") ? "active" : ""}>Contacto</a></li>
             </ul>
         </nav>
     </header>
