@@ -3,12 +3,13 @@ import Layout from './Layout.astro';
 
 const { frontmatter } = Astro.props;
 
-// AQUÍ SÍ VA LA LÓGICA:
-// Si existe "banner", úsalo. Si no, usa "image".
+// Lógica de imagen de cabecera
 const imagenCabecera = frontmatter.banner ? frontmatter.banner : frontmatter.image;
 ---
 
 <Layout titulo={frontmatter.title}>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" />
+
     <main class="contenedor seccion-noticia-detalle">
         <article class="contenido-noticia">
             <header style="text-align: center; margin-bottom: 2rem;">
@@ -26,10 +27,34 @@ const imagenCabecera = frontmatter.banner ? frontmatter.banner : frontmatter.ima
                 <slot />
             </div>
 
-<div style="margin-top: 5rem; margin-bottom: 3rem; text-align: center;">
+            <div style="margin-top: 5rem; margin-bottom: 3rem; text-align: center;">
                 <a href="/noticias" class="boton-secundario">← Volver a Noticias</a>
             </div>
-
         </article>
     </main>
 </Layout>
+
+<script is:inline>
+    // Esperamos a que la página cargue
+    document.addEventListener('DOMContentLoaded', () => {
+        // Buscamos el contenedor de la galería
+        const galeria = document.querySelector('.galeria-noticia');
+        
+        if (galeria && window.lightGallery) {
+            // Inicializamos la galería
+            window.lightGallery(galeria, {
+                selector: 'img', // Le decimos que busque directamente las etiquetas <img>
+                speed: 500,
+                download: false
+            });
+
+            // Agregamos un cursor de "lupa" para que la gente sepa que puede dar clic
+            const imagenes = galeria.querySelectorAll('img');
+            imagenes.forEach(img => {
+                img.style.cursor = 'zoom-in';
+                // Truco: LightGallery necesita el atributo data-src para saber qué abrir
+                img.setAttribute('data-src', img.src);
+            });
+        }
+    });
+</script>
