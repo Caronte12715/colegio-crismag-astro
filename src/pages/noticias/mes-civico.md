@@ -7,9 +7,19 @@ banner: "/images/noticia-mes-civico-grande.jpg"
 description: "Conmemoramos los 204 años de independencia patria con un emotivo acto cívico."
 ---
 
-(Pega aquí el texto real de tu noticia...)
+Con gran fervor patriótico, dimos inicio al mes cívico con un acto solemne en nuestras
+instalaciones. En este evento, conmemoramos con orgullo los 204 años de independencia patria
+de nuestro querido El Salvador. Los estudiantes de todos los niveles participaron activamente
+desde el ingreso del Pabellón Nacional, la entonación de nuestro Himno Nacional, hasta la
+declamación de poemas alusivos a esta fecha tan importante.
+ Fue un momento para recordar nuestra historia y reforzar nuestros valores cívicos.
 
-Damos inicio a las celebraciones patrias rindiendo honor a nuestra bandera y a los próceres que lucharon por nuestra libertad.
+## Reforzando Nuestra Identidad
+
+Durante todo septiembre, nuestro colegio realizará diversas actividades para celebrar la 
+independencia, fomentando en nuestros estudiantes el amor y el respeto por nuestros 
+símbolos patrios y nuestra cultura. Invitamos a toda la comunidad educativa a participar en 
+las próximas celebraciones.
 
 ## Acto de Inauguración
 

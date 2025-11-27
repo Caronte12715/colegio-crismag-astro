@@ -7,9 +7,12 @@ banner: "/images/noticia-cierre-grande.JPG"
 description: "Con bailes, juegos y un ambiente familiar, cerramos con broche de oro las celebraciones."
 ---
 
-(Borra esto y pega aquí el texto real de tu noticia antigua...)
+Con un ambiente de fiesta y orgullo patriótico, cerramos con broche de oro las celebraciones del mes cívico. Nuestra comunidad educativa se reunió en un festival familiar que rindió un último homenaje a las cinco naciones de Centroamérica y celebró nuestra herencia como salvadoreños.
 
-Con gran alegría y fervor patriótico, nuestra comunidad educativa se reunió para despedir el mes de la independencia. Fue una jornada llena de color, música y tradición.
+El acto central estuvo marcado por la reedición de los bailes alusivos a cada país centroamericano, donde nuestros estudiantes, ataviados en trajes típicos, deleitaron a los presentes con su talento y gallardía. Fue una colorida muestra de la diversidad cultural que enriquece nuestra región.
+
+## Una Mañana en Familia
+Además de los actos culturales, la mañana estuvo llena de diversas actividades para todos. Se organizaron ventas de platillos típicos, juegos tradicionales para los más pequeños y dinámicas que promovieron la convivencia entre padres, alumnos y docentes. Agradecemos a todas las familias por su asistencia y participación, que hicieron de este cierre un evento memorable.
 
 ## Galería de la Celebración
 
@@ -17,4 +20,7 @@ Con gran alegría y fervor patriótico, nuestra comunidad educativa se reunió p
     <img src="/images/cierre-foto1.jpg" alt="Bailes folklóricos">
     <img src="/images/cierre-foto2.JPG" alt="Alumnos participando">
     <img src="/images/cierre-foto3.JPG" alt="Acto de cierre">
+    <img src="/images/cierre-foto4.JPG" alt="Baile Folklorico">
+    <img src="/images/cierre-foto5.JPG" alt="Baile Folklorico">
+    <img src="/images/cierre-foto6.JPG" alt="Ventas y convivencias">
     </div>

@@ -953,3 +953,30 @@ img {
 .galeria-noticia img:hover {
     transform: scale(1.02);
 }
+
+/* --- ESTILO PARA LA LETRA CAPITAL (DROP CAP) --- */
+
+/* Selecciona la primera letra del primer párrafo dentro del artículo */
+.texto-articulo p:first-of-type::first-letter {
+    float: left;            /* Flota a la izquierda */
+    font-size: 3.5rem;      /* Tamaño muy grande */
+    line-height: 0.8;       /* Altura de línea compacta */
+    padding-right: 12px;    /* Espacio a la derecha */
+    padding-top: 4px;       /* Ajuste superior */
+    color: #004481;         /* Azul oscuro (Color institucional) */
+    font-weight: bold;      /* Negrita */
+    font-family: 'Lora', serif; /* Usamos la fuente elegante si está disponible */
+}
+
+/* --- CORRECCIÓN BOTÓN VOLVER ARRIBA --- */
+#btn-volver-arriba {
+    bottom: 90px !important; /* Lo subimos para que no choque con el footer */
+    z-index: 9999; /* Aseguramos que siempre esté visible y clickeable */
+}
+
+/* Opcional: Ajuste para móviles para que no estorbe */
+@media (max-width: 768px) {
+    #btn-volver-arriba {
+        bottom: 110px !important; /* En celular lo subimos un poquito más */
+    }
+}
