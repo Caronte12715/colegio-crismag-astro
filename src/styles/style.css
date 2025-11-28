@@ -1,8 +1,11 @@
+/* --- Importación de Fuentes (Mejora 1) --- */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&family=Nunito:wght@400;700;800&display=swap');
+
 /* --- Variables y Estilos Globales --- */
 :root {
     --color-primario: #003366;
-    --color-secundario: #007bff;
-    --color-acento: #ffc107;
+    --color-secundario: #003366;
+    --color-acento: #00A8E8;
     --color-texto: #333;
     --color-blanco: #fff;
     --color-fondo-claro: #f8f9fa;
@@ -25,6 +28,15 @@ body {
     color: var(--color-texto);
     line-height: 1.6;
     margin: 0;
+
+
+    background-color: #ffffff;
+    /* Puntos azules sutiles (Color primario con transparencia) */
+    background-image: radial-gradient(rgba(0, 51, 102, 0.15) 1.5px, transparent 1.5px);
+    /* Separación de los puntos */
+    background-size: 20px 20px;
+    /* Para que el fondo no se mueva al hacer scroll (Efecto elegante) */
+    background-attachment: fixed;
 }
 
 .contenedor {
@@ -63,14 +75,17 @@ img {
     color: var(--color-blanco);
 }
 
-/* --- Header y Navegación --- */
+/* --- Header y Navegación (Mejora 2: Transparencia) --- */
 .header {
-    background-color: var(--color-blanco);
-    padding: 1rem 0;
+    background-color: rgba(255, 255, 255, 0.95); /* Transparente al 90% */
+    backdrop-filter: blur(10px); /* Efecto vidrio */
+    padding: 0.5rem 0; /* Un poco más delgado para verse moderno */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
+    position: sticky; /* Se mantiene pegajoso */
     top: 0;
+    width: 100%;
     z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 .nav {
@@ -83,8 +98,8 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 110px;
-    height: 110px;
+    width: 90px; /* Ajuste para header más delgado */
+    height: 90px;
     border-radius: 50%;
     background-color: #f5f5f5;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -97,7 +112,7 @@ img {
 }
 
 .logo-img {
-    max-height: 85px;
+    max-height: 70px;
     width: auto;
 }
 
@@ -869,6 +884,76 @@ img {
     to { opacity: 1; }
 }
 
+/* =================================================================
+   CORRECCIONES FINALES (PEGAR AL FINAL DEL ARCHIVO)
+   ================================================================= */
+
+/* 1. ARREGLAR LISTA DE TELÉFONOS (Para que no se vean pegados) */
+.info-contacto ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.info-contacto li {
+    margin-bottom: 8px !important;
+    display: block !important;
+}
+.info-contacto a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* 2. ARREGLAR ALINEACIÓN DE TARJETAS (Botones siempre abajo) */
+.tarjeta, .tarjeta-noticia {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+.tarjeta-contenido {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+.tarjeta-contenido a {
+    margin-top: auto !important;
+    align-self: flex-start !important;
+}
+
+/* 3. ARREGLAR GALERÍA DE NOTICIAS (Grid ordenado) */
+.galeria-noticia {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 1.5rem !important;
+    margin: 2rem 0 !important;
+    width: 100% !important;
+}
+.galeria-noticia img {
+    width: 100% !important;
+    height: 250px !important;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+    cursor: zoom-in !important;
+}
+
+/* 4. ARREGLAR GALERÍA PANTALLA COMPLETA (Fotos centradas) */
+.lg-outer .lg-img-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+}
+.lg-outer .lg-object {
+    max-height: 90vh !important;
+    max-width: 90vw !important;
+    margin: auto !important;
+}
+
+/* 5. ARREGLAR BOTÓN SUBIR (Que no tape el Facebook) */
+#btn-volver-arriba {
+    bottom: 90px !important;
+    z-index: 9999 !important;
+}
+
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
     .nav-toggle {
@@ -964,26 +1049,90 @@ img {
     }
 }
 
+/* ======================================================
+   ARREGLO FINAL DE CONTACTO (Alineación y Color)
+   ====================================================== */
+
+/* 1. Estructura Flexible (Icono a la izquierda, texto a la derecha) */
+.dato-contacto {
+    display: flex;          /* Pone el icono al lado del texto */
+    align-items: flex-start; /* Alinea arriba */
+    gap: 15px;              /* Espacio entre icono y texto */
+    margin-bottom: 1.5rem;  /* Espacio entre cada bloque */
+    color: #fff;            /* Texto blanco por defecto */
+}
+
+/* 2. Estilo de los Iconos */
+.dato-contacto i {
+    color: var(--color-secundario); /* Icono Dorado/Amarillo */
+    font-size: 1.3rem;
+    margin-top: 5px; /* Ajuste para que cuadre con el texto */
+    min-width: 20px; /* Para que todos los iconos ocupen lo mismo */
+}
+
+/* 3. Estilo de los Enlaces (Teléfonos y Correo) */
+.dato-contacto a {
+    color: #fff;            /* Blancos al inicio */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Suaviza el cambio de color */
+    font-weight: 600;       /* Un poco más gordita la letra */
+}
+
+/* 4. ¡EL EFECTO HOVER! (Cuando pones el puntero) */
+.dato-contacto a:hover {
+    color: var(--color-secundario); /* Se pone Dorado/Amarillo */
+    text-decoration: underline;     /* Subrayado opcional */
+}
+
+/* Ajuste para el texto que no es enlace (Dirección) */
+.texto-dato {
+    display: flex;
+    flex-direction: column;
+}
+
 /* =================================================================
-   CORRECCIONES FINALES (PEGAR AL FINAL DEL ARCHIVO)
+   PARCHES DE CORRECCIÓN (PEGAR AL FINAL DEL ARCHIVO)
    ================================================================= */
 
-/* 1. ARREGLAR LISTA DE TELÉFONOS (Para que no se vean pegados) */
-.info-contacto ul {
+/* 1. ARREGLAR CONTACTOS (Alineación perfecta Icono-Texto) */
+.info-item {
+    display: flex !important;
+    gap: 15px !important;
+    margin-bottom: 1.5rem !important;
+    align-items: flex-start !important;
+}
+.info-item i {
+    color: var(--color-acento) !important; /* Icono CIAN */
+    font-size: 1.4rem !important;
+    margin-top: 4px !important;
+    min-width: 25px !important;
+    text-align: center !important;
+}
+.info-item h4 {
+    color: var(--color-acento) !important; /* Títulos CIAN */
+    margin: 0 0 0.5rem 0 !important;
+    border: none !important;
+    font-size: 1.1rem !important;
+}
+.info-item a {
+    text-decoration: none !important;
+    color: #fff !important; /* Texto blanco en fondo oscuro */
+    transition: color 0.3s !important;
+}
+.info-item a:hover, .info-contacto a:hover {
+    color: var(--color-acento) !important; /* Hover CIAN */
+}
+/* Lista de teléfonos limpia */
+.info-item ul {
     list-style: none !important;
     padding: 0 !important;
     margin: 0 !important;
 }
-.info-contacto li {
-    margin-bottom: 8px !important;
-    display: block !important;
-}
-.info-contacto a {
-    text-decoration: none !important;
-    color: inherit !important;
+.info-item li {
+    margin-bottom: 5px !important;
 }
 
-/* 2. ARREGLAR ALINEACIÓN DE TARJETAS (Botones siempre abajo) */
+/* 2. ARREGLAR TARJETAS (Misma altura y botones abajo) */
 .tarjeta, .tarjeta-noticia {
     display: flex !important;
     flex-direction: column !important;
@@ -998,24 +1147,49 @@ img {
     margin-top: auto !important;
     align-self: flex-start !important;
 }
+/* Fechas en Cian */
+.tarjeta-noticia .fecha {
+    color: var(--color-acento) !important;
+}
 
-/* 3. ARREGLAR GALERÍA DE NOTICIAS (Grid ordenado) */
+/* 3. ARREGLAR BARRA DEL MENÚ (Cian) */
+.nav-menu a.active {
+    color: var(--color-acento) !important;
+}
+.nav-menu a.active::after {
+    background-color: var(--color-acento) !important;
+}
+.nav-menu li a:hover {
+    color: var(--color-acento) !important;
+}
+
+/* 4. BOTONES (Cian con texto blanco) */
+.boton {
+    background-color: var(--color-acento) !important;
+    color: #fff !important;
+}
+.boton:hover {
+    background-color: #008ecc !important; /* Un poco más oscuro al hover */
+}
+
+/* 5. GALERÍA DE NOTICIAS (Grid y Zoom) */
 .galeria-noticia {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-    gap: 1.5rem !important;
-    margin: 2rem 0 !important;
+    gap: 1rem !important;
     width: 100% !important;
+    margin: 2rem 0 !important;
 }
 .galeria-noticia img {
     width: 100% !important;
     height: 250px !important;
     object-fit: cover !important;
-    border-radius: 10px !important;
+    border-radius: 8px !important;
     cursor: zoom-in !important;
+    aspect-ratio: 16/9 !important;
 }
 
-/* 4. ARREGLAR GALERÍA PANTALLA COMPLETA (Fotos centradas) */
+/* 6. CORRECCIÓN LIGHTGALLERY (Centrado) */
 .lg-outer .lg-img-wrap {
     display: flex !important;
     align-items: center !important;
@@ -1028,8 +1202,62 @@ img {
     margin: auto !important;
 }
 
-/* 5. ARREGLAR BOTÓN SUBIR (Que no tape el Facebook) */
-#btn-volver-arriba {
-    bottom: 90px !important;
-    z-index: 9999 !important;
+/* =======================================================
+   CORRECCIÓN INTELIGENTE DE COLORES (Texto Contacto)
+   ======================================================= */
+
+/* CASO 1: En el Inicio (Fondo Oscuro) -> Texto Blanco */
+.info-contacto .info-item p, 
+.info-contacto .info-item a {
+    color: #ffffff !important;
+    margin: 0;
+}
+
+/* CASO 2: En página Contacto (Fondo Claro) -> Texto Oscuro */
+.info-detallada .info-item p, 
+.info-detallada .info-item a {
+    color: #333333 !important; /* Gris oscuro para leerse bien */
+    margin: 0;
+}
+
+/* Regla común: Al pasar el mouse, los enlaces se ponen Cian */
+.info-item a:hover {
+    color: var(--color-acento) !important;
+}
+
+/* =======================================================
+   CORRECCIÓN FINAL: ALINEACIÓN DEL MAPA
+   ======================================================= */
+
+/* 1. Aseguramos que el contenedor sea de 2 columnas */
+.grid-contacto-index {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 3rem !important;
+    align-items: start !important;
+}
+
+/* 2. MAGIA: Hacemos que el mapa ocupe TODO el ancho abajo */
+.mapa-contacto-index {
+    grid-column: 1 / -1 !important; /* Expande de principio a fin */
+    width: 100% !important;
+    margin-top: 2rem !important;
+}
+
+/* 3. Aseguramos que el mapa se vea bien dentro */
+.mapa-contacto-index iframe {
+    width: 100% !important;
+    height: 250px !important; /* Un poco más alto para que luzca */
+    border-radius: 10px !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+}
+
+/* Ajuste para móviles (Volver a 1 columna normal) */
+@media (max-width: 768px) {
+    .grid-contacto-index {
+        grid-template-columns: 1fr !important;
+    }
+    .mapa-contacto-index {
+        grid-column: auto !important;
+    }
 }
