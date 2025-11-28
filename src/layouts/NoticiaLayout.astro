@@ -3,13 +3,12 @@ import Layout from './Layout.astro';
 
 const { frontmatter } = Astro.props;
 
-// 1. Lógica para elegir la foto (Banner grande o Imagen normal)
+// Lógica de imagen de cabecera
 const imagenCabecera = frontmatter.banner ? frontmatter.banner : frontmatter.image;
 
-// 2. Función para que la fecha se vea bonita (Ej: 26 de noviembre de 2025)
+// Función para formatear fecha
 const formatearFecha = (fecha) => {
     if (!fecha) return '';
-    // El 'T12:00:00' evita que por la zona horaria salga un día antes
     const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(fecha + 'T12:00:00').toLocaleDateString('es-ES', opciones);
 };
@@ -22,7 +21,6 @@ const formatearFecha = (fecha) => {
         <article class="contenido-noticia">
             <header style="text-align: center; margin-bottom: 2rem;">
                 <h1 style="font-size: 2.5rem; color: var(--color-primario);">{frontmatter.title}</h1>
-                
                 <p style="color: #666; font-style: italic;">
                     Publicado el: {formatearFecha(frontmatter.date)}
                 </p>
@@ -30,6 +28,8 @@ const formatearFecha = (fecha) => {
                 <img 
                     src={imagenCabecera} 
                     alt={frontmatter.title} 
+                    loading="eager"
+                    decoding="async"
                     style="width: 100%; max-height: 500px; object-fit: cover; border-radius: 10px; margin-top: 1rem;"
                 >
             </header>
@@ -48,19 +48,25 @@ const formatearFecha = (fecha) => {
 <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
         const galeria = document.querySelector('.galeria-noticia');
-        if (galeria && window.lightGallery) {
-            window.lightGallery(galeria, {
-                selector: 'img',
-                speed: 500,
-                download: false
-            });
-            
-            // Pone el cursor de lupa en las fotos
+        
+        if (galeria) {
+            // Aplicar Lazy Loading a las fotos de la galería
             const imagenes = galeria.querySelectorAll('img');
             imagenes.forEach(img => {
+                img.setAttribute('loading', 'lazy'); // Carga diferida
+                img.setAttribute('decoding', 'async');
                 img.style.cursor = 'zoom-in';
                 img.setAttribute('data-src', img.src);
             });
+
+            // Iniciar LightGallery
+            if (window.lightGallery) {
+                window.lightGallery(galeria, {
+                    selector: 'img',
+                    speed: 500,
+                    download: false
+                });
+            }
         }
     });
 </script>
