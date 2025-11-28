@@ -7,9 +7,11 @@ const { frontmatter } = Astro.props;
 const imagenCabecera = frontmatter.banner ? frontmatter.banner : frontmatter.image;
 
 // Función para formatear fecha
-const formatearFecha = (fecha) => {
+// Función para formatear fecha (Versión corregida para TypeScript)
+const formatearFecha = (fecha: any) => {
     if (!fecha) return '';
-    const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+    // Definimos explícitamente el tipo de opciones para que no se queje
+    const opciones: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(fecha + 'T12:00:00').toLocaleDateString('es-ES', opciones);
 };
 ---
