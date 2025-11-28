@@ -146,7 +146,7 @@ img {
 
 /* --- Sección Hero (Página de Inicio) --- */
 .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/hero-bg.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/hero-bg.webp');
     background-size: cover;
     background-position: center;
     height: 90vh;
