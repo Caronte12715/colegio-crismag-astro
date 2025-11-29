@@ -1,8 +1,11 @@
 ---
 import '../styles/style.css';
-const { titulo } = Astro.props;
+// Ahora recibimos 'titulo' Y 'descripcion'
+const { titulo, descripcion } = Astro.props;
 
-// Lógica para la barra amarilla del menú
+// Si no nos dan una descripción, usamos esta por defecto:
+const descDefault = "Colegio Crismag en San Miguel. Formación cristiana integral, excelencia académica y valores desde Parvularia hasta Bachillerato.";
+
 const pathname = Astro.url.pathname;
 const currentPath = pathname.slice(1); 
 ---
@@ -13,8 +16,8 @@ const currentPath = pathname.slice(1);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>{titulo} | Colegio Crismag - Profa. Martha Garay de Castillo</title>
-    <meta name="description" content="Bienvenidos al Colegio Crismag en San Miguel. Formación cristiana integral desde Parvularia hasta Bachillerato.">
+    <title>{titulo} | Colegio Crismag</title>
+    <meta name="description" content={descripcion || descDefault}>
     
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.colegiocrismag.com/" />
