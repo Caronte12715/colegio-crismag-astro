@@ -30,6 +30,7 @@ const currentPath = pathname.slice(1);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preload" as="image" href="/images/hero-bg.webp">
     <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TU-CODIGO-AQUI"></script>
     <script is:inline>
@@ -47,7 +48,13 @@ const currentPath = pathname.slice(1);
     <header class="header">
         <nav class="nav contenedor">
             <a href="/" class="logo-enlace">
-                <img src="/images/logo.png" alt="Logo Colegio Crismag" class="logo-img">
+                <img 
+                    src="/images/logo.png" 
+                    alt="Logo Colegio Crismag" 
+                    class="logo-img" 
+                    width="70" 
+                    height="70"
+                >
             </a>
             <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
             <ul class="nav-menu">
