@@ -87,5 +87,116 @@ const currentPath = pathname.slice(1);
     <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
     <script is:inline src="/main.js"></script>
+    
+    <div id="aviso-clases" class="aviso-flotante">
+    <button class="cerrar-aviso" onclick="document.getElementById('aviso-clases').style.display='none'">×</button>
+    <div class="contenido-aviso">
+        <span class="icono">📅</span>
+        <div class="texto">
+            <h3>¡Regreso a Clases!</h3>
+            <p>Te esperamos este próximo <br><strong>Lunes 19 de Enero</strong>.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Estilos del Aviso */
+    .aviso-flotante {
+        position: fixed;
+        bottom: 18%; /* Un poco más arriba */
+        right: 30px;  /* Un poco más a la izquierda */
+        
+        /* EFECTO TRASLÚCIDO (GLASSMORPHISM) */
+        background: rgba(255, 255, 255, 0.4); /* Blanco al 90% de opacidad */
+        backdrop-filter: blur(10px); /* Desenfoca lo que pasa por detrás */
+        -webkit-backdrop-filter: blur(10px); /* Para Safari */
+        
+        border-left: 6px solid #004d99;
+        
+        /* TAMAÑO MÁS GRANDE */
+        padding: 25px 30px; /* Más espacio interno */
+        max-width: 400px;   /* Más ancho (antes era 300px) */
+        
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); /* Sombra más suave y difusa */
+        z-index: 9999;
+        display: none;
+        animation: deslizar 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); /* Animación más elegante */
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .contenido-aviso {
+        display: flex;
+        align-items: center;
+        gap: 20px; /* Más separación entre icono y texto */
+    }
+
+    .icono { 
+        font-size: 3rem; /* Icono más grande (antes 2rem) */
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+    
+    .texto h3 {
+        margin: 0;
+        font-size: 1.4rem; /* Título más grande */
+        color: #004d99;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+    }
+    
+    .texto p {
+        margin: 8px 0 0;
+        font-size: 1.1rem; /* Texto más grande y legible */
+        color: #333;
+        line-height: 1.4;
+    }
+
+    .cerrar-aviso {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #888;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .cerrar-aviso:hover { color: #d00; }
+
+    @keyframes deslizar {
+        from { transform: translateY(100px) scale(0.9); opacity: 0; }
+        to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    
+    /* Ajuste para celulares: que no ocupe toda la pantalla */
+    @media (max-width: 500px) {
+        .aviso-flotante {
+            max-width: 90%;
+            bottom: 20px;
+            right: 5%;
+            left: 5%;
+        }
+    }
+</style>
+
+<script is:inline>
+    // Lógica para mostrarlo solo hasta el 20 de Enero
+    (function() {
+        const hoy = new Date();
+        const añoActual = hoy.getFullYear();
+        
+        // Fecha límite: 21 de Enero a las 00:00
+        const fechaLimite = new Date(añoActual, 0, 21); 
+        
+        if (hoy < fechaLimite) {
+            const aviso = document.getElementById('aviso-clases');
+            if(aviso) aviso.style.display = 'block';
+        }
+    })();
+</script>
+    
+
 </body>
 </html>
