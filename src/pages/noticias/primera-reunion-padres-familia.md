@@ -1,34 +1,42 @@
 ---
 layout: ../../layouts/NoticiaLayout.astro
-title: "Primera Reunión para Padres de Familia 2026"
+title: "Primera Reunión General: Alianza Familia y Colegio 2026"
 date: "2026-02-07"
 image: "/images/primera-reunion-portada.jpg"
 banner: "/images/primera-reunion-banner.jpg"
-description: "Iniciamos el año escolar con nuestra primera asamblea general de padres, enfocada en la disciplina y la excelencia académica."
+description: "Con éxito se llevó a cabo el primer encuentro de padres de familia, sentando las bases de disciplina y compromiso para el nuevo año escolar."
 ---
 
-El pasado **sábado 7 de febrero**, se llevó a cabo con éxito la **Primera Reunión para Padres de Familia** del ciclo lectivo 2026. Este encuentro es fundamental para establecer las bases de trabajo y los valores que guiarán a nuestros estudiantes durante todo el año.
+El pasado **sábado 7 de febrero**, las instalaciones de nuestro colegio se llenaron de entusiasmo y compromiso con la celebración de la **Primera Reunión para Padres de Familia del ciclo lectivo 2026**. Este encuentro marcó el inicio formal de nuestra alianza educativa, enfocada en la excelencia académica y la formación en valores.
 
-## Bienvenida y Disciplina
+## Un Comienzo con Propósito
 
-La jornada inició con una bienvenida general donde se dio lectura detallada a las **reglas de disciplina** de la institución. En el Colegio Crismag, creemos que el orden y el respeto son pilares esenciales para el aprendizaje y el crecimiento espiritual de los alumnos.
+La jornada inició con una asamblea general donde la dirección dio la bienvenida oficial a las familias nuevas y recurrentes. El mensaje central destacó que la educación es un **esfuerzo compartido**: mientras el colegio entrega las herramientas académicas, el hogar fortalece la base moral y espiritual.
 
-## Orientación en las Aulas
+### Disciplina y Convivencia Escolar
+Durante la reunión, se dio lectura detallada a las **reglas de disciplina y convivencia**. Se enfatizó en puntos clave como:
+* **Puntualidad y Asistencia:** Hábitos fundamentales para el éxito del estudiante.
+* **Presentación Personal:** El uso correcto del uniforme como símbolo de identidad y respeto.
+* **Valores Cristianos:** El trato respetuoso y la resolución de conflictos bajo principios bíblicos.
 
-Posteriormente, los padres de familia se trasladaron a las aulas correspondientes para recibir información específica de cada grado:
-* Se presentaron las metas académicas para el año 2026.
-* Se explicaron los métodos de evaluación y entrega de tareas.
-* Los docentes brindaron detalles sobre los materiales y la planificación de clases.
+> *"Instruye al niño en su camino, y aun cuando fuere viejo no se apartará de él."* — Proverbios 22:6
 
-Agradecemos la masiva asistencia, la cual refleja el compromiso de los padres en la formación integral de sus hijos.
+## Trabajo en las Aulas
 
-> *"Instruye al niño en su camino, y aun cuando fuere viejo no se apartará de él."* - Proverbios 22:6
+La parte más productiva del evento ocurrió en los salones de clase. Cada padre tuvo la oportunidad de conocer al docente encargado de su hijo, donde se abordaron temas específicos:
 
-## Galería de Imágenes
+1.  **Planificación Académica:** Se presentaron los objetivos de aprendizaje para cada trimestre.
+2.  **Sistemas de Evaluación:** Información sobre cómo se calificarán las tareas, proyectos y exámenes.
+3.  **Canales de Comunicación:** El uso de las plataformas oficiales y horarios de atención para asegurar que ningún padre se quede con dudas durante el año.
+
+## Mirando hacia el Futuro
+Este 2026 viene cargado de retos y nuevas metas. Agradecemos profundamente a cada padre y madre de familia que asistió, demostrando que su prioridad es el futuro educativo de sus hijos. ¡Estamos listos para hacer de este un año inolvidable!
+
+## Galería del Encuentro
 
 <div class="galeria-noticia">
-    <img src="/images/reunion-padres-1.jpg" alt="Acto de bienvenida">
-    <img src="/images/reunion-padres-2.jpg" alt="Lectura de disciplina">
-    <img src="/images/reunion-padres-3.jpg" alt="Padres en los salones">
-    <img src="/images/reunion-padres-4.jpg" alt="Docentes explicando">
+    <img src="/images/reunion-padres-1.jpg" alt="Palabras de bienvenida de la dirección">
+    <img src="/images/reunion-padres-2.jpg" alt="Padres de familia atendiendo a la lectura del reglamento">
+    <img src="/images/reunion-padres-3.jpg" alt="Docentes explicando la metodología en el aula">
+    <img src="/images/reunion-padres-4.jpg" alt="Entrega de materiales y guías informativas">
 </div>
