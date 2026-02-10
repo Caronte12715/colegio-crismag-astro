@@ -1,0 +1,202 @@
+---
+import '../styles/style.css';
+// Ahora recibimos 'titulo' Y 'descripcion'
+const { titulo, descripcion } = Astro.props;
+
+// Si no nos dan una descripción, usamos esta por defecto:
+const descDefault = "Colegio Crismag en San Miguel. Formación cristiana integral, excelencia académica y valores desde Parvularia hasta Bachillerato.";
+
+const pathname = Astro.url.pathname;
+const currentPath = pathname.slice(1); 
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{titulo} | Colegio Crismag</title>
+    <meta name="description" content={descripcion || descDefault}>
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.colegiocrismag.com/" />
+    <meta property="og:title" content="Colegio Crismag - Excelencia Académica y Valores" />
+    <meta property="og:image" content="https://www.colegiocrismag.com/images/logo.png" />
+
+    <link rel="icon" href="/images/logo.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Nunito:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preload" as="image" href="/images/hero-bg.webp">
+    <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TU-CODIGO-AQUI"></script>
+    <script is:inline>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        // REEMPLAZA ESTO CON TU CÓDIGO REAL QUE EMPIEZA CON G-
+        gtag('config', 'G-LDY65Y2R9Q');
+    </script>
+</head>
+</head>
+<body>
+    
+    <header class="header">
+        <nav class="nav contenedor">
+            <a href="/" class="logo-enlace">
+                <img 
+                    src="/images/logo.png" 
+                    alt="Logo Colegio Crismag" 
+                    class="logo-img" 
+                    width="70" 
+                    height="70"
+                >
+            </a>
+            <button class="nav-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+            <ul class="nav-menu">
+                <li><a href="/" class={currentPath === "" ? "active" : ""}>Inicio</a></li>
+                <li><a href="/quienes-somos" class={currentPath.startsWith("quienes-somos") ? "active" : ""}>Nosotros</a></li>
+                <li><a href="/#oferta-educativa">Oferta Educativa</a></li>
+                <li><a href="/noticias" class={currentPath.startsWith("noticias") ? "active" : ""}>Noticias</a></li>
+                <li><a href="/contacto" class={currentPath.startsWith("contacto") ? "active" : ""}>Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <slot />
+
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="footer-contenido">
+                <p>© 2025 Colegio Crismag - Profa. Martha Garay de Castillo.</p>
+                <div class="redes-sociales">
+                    <a href="https://www.facebook.com/crismag.sanmiguel" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="#" id="btn-volver-arriba"><i class="fas fa-arrow-up"></i></a>
+    
+    <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
+    <script is:inline src="/main.js"></script>
+    
+    <div id="aviso-clases" class="aviso-flotante">
+    <button class="cerrar-aviso" onclick="document.getElementById('aviso-clases').style.display='none'">×</button>
+    <div class="contenido-aviso">
+        <span class="icono">📅</span>
+        <div class="texto">
+            <h3>¡Regreso a Clases!</h3>
+            <p>Lunes 19 de Enero <br><strong>Te esperamos !!! </strong>.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Estilos del Aviso */
+    .aviso-flotante {
+        position: fixed;
+        bottom: 18%; /* Un poco más arriba */
+        right: 30px;  /* Un poco más a la izquierda */
+        
+        /* EFECTO TRASLÚCIDO (GLASSMORPHISM) */
+        background: rgba(255, 255, 255, 0.4); /* Blanco al 90% de opacidad */
+        backdrop-filter: blur(10px); /* Desenfoca lo que pasa por detrás */
+        -webkit-backdrop-filter: blur(10px); /* Para Safari */
+        
+        border-left: 6px solid #004d99;
+        
+        /* TAMAÑO MÁS GRANDE */
+        padding: 25px 30px; /* Más espacio interno */
+        max-width: 400px;   /* Más ancho (antes era 300px) */
+        
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); /* Sombra más suave y difusa */
+        z-index: 9999;
+        display: none;
+        animation: deslizar 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); /* Animación más elegante */
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .contenido-aviso {
+        display: flex;
+        align-items: center;
+        gap: 20px; /* Más separación entre icono y texto */
+    }
+
+    .icono { 
+        font-size: 3rem; /* Icono más grande (antes 2rem) */
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+    
+    .texto h3 {
+        margin: 0;
+        font-size: 1.4rem; /* Título más grande */
+        color: #004d99;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+    }
+    
+    .texto p {
+        margin: 8px 0 0;
+        font-size: 1.1rem; /* Texto más grande y legible */
+        color: #333;
+        line-height: 1.4;
+    }
+
+    .cerrar-aviso {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #888;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .cerrar-aviso:hover { color: #d00; }
+
+    @keyframes deslizar {
+        from { transform: translateY(100px) scale(0.9); opacity: 0; }
+        to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    
+    /* Ajuste para celulares: que no ocupe toda la pantalla */
+    @media (max-width: 500px) {
+        .aviso-flotante {
+            max-width: 90%;
+            bottom: 20px;
+            right: 5%;
+            left: 5%;
+        }
+    }
+</style>
+
+<script is:inline>
+    // Lógica para mostrarlo solo hasta el 20 de Enero
+    (function() {
+        const hoy = new Date();
+        const añoActual = hoy.getFullYear();
+        
+        // Fecha límite: 21 de Enero a las 00:00
+        const fechaLimite = new Date(añoActual, 0, 21); 
+        
+        if (hoy < fechaLimite) {
+            const aviso = document.getElementById('aviso-clases');
+            if(aviso) aviso.style.display = 'block';
+        }
+    })();
+</script>
+    
+
+</body>
+</html>

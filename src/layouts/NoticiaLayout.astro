@@ -1,0 +1,74 @@
+---
+import Layout from './Layout.astro';
+
+const { frontmatter } = Astro.props;
+
+// Lógica de imagen de cabecera
+const imagenCabecera = frontmatter.banner ? frontmatter.banner : frontmatter.image;
+
+// Función para formatear fecha
+// Función para formatear fecha (Versión corregida para TypeScript)
+const formatearFecha = (fecha: any) => {
+    if (!fecha) return '';
+    // Definimos explícitamente el tipo de opciones para que no se queje
+    const opciones: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(fecha + 'T12:00:00').toLocaleDateString('es-ES', opciones);
+};
+---
+
+<Layout titulo={frontmatter.title}>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" />
+
+    <main class="contenedor seccion-noticia-detalle">
+        <article class="contenido-noticia">
+            <header style="text-align: center; margin-bottom: 2rem;">
+                <h1 style="font-size: 2.5rem; color: var(--color-primario);">{frontmatter.title}</h1>
+                <p style="color: #666; font-style: italic;">
+                    Publicado el: {formatearFecha(frontmatter.date)}
+                </p>
+                
+                <img 
+                    src={imagenCabecera} 
+                    alt={frontmatter.title} 
+                    loading="eager"
+                    decoding="async"
+                    style="width: 100%; max-height: 500px; object-fit: cover; border-radius: 10px; margin-top: 1rem;"
+                >
+            </header>
+
+            <div class="texto-articulo" style="line-height: 1.8; font-size: 1.1rem;">
+                <slot />
+            </div>
+
+            <div style="margin-top: 5rem; margin-bottom: 3rem; text-align: center;">
+                <a href="/noticias" class="boton-secundario">← Volver a Noticias</a>
+            </div>
+        </article>
+    </main>
+</Layout>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        const galeria = document.querySelector('.galeria-noticia');
+        
+        if (galeria) {
+            // Aplicar Lazy Loading a las fotos de la galería
+            const imagenes = galeria.querySelectorAll('img');
+            imagenes.forEach(img => {
+                img.setAttribute('loading', 'lazy'); // Carga diferida
+                img.setAttribute('decoding', 'async');
+                img.style.cursor = 'zoom-in';
+                img.setAttribute('data-src', img.src);
+            });
+
+            // Iniciar LightGallery
+            if (window.lightGallery) {
+                window.lightGallery(galeria, {
+                    selector: 'img',
+                    speed: 500,
+                    download: false
+                });
+            }
+        }
+    });
+</script>

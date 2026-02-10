@@ -1,0 +1,1263 @@
+/* --- Importación de Fuentes (Mejora 1) --- */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&family=Nunito:wght@400;700;800&display=swap');
+
+/* --- Variables y Estilos Globales --- */
+:root {
+    --color-primario: #003366;
+    --color-secundario: #003366;
+    --color-acento: #00A8E8;
+    --color-texto: #333;
+    --color-blanco: #fff;
+    --color-fondo-claro: #f8f9fa;
+    --fuente-titulos: 'Nunito', sans-serif;
+    --fuente-cuerpo: 'Nunito Sans', sans-serif;
+    --fuente-elegante: 'Lora', serif; /* Agregado para noticias */
+}
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: var(--fuente-cuerpo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    margin: 0;
+
+
+    background-color: #ffffff;
+    /* Puntos azules sutiles (Color primario con transparencia) */
+    background-image: radial-gradient(rgba(0, 51, 102, 0.15) 1.5px, transparent 1.5px);
+    /* Separación de los puntos */
+    background-size: 20px 20px;
+    /* Para que el fondo no se mueva al hacer scroll (Efecto elegante) */
+    background-attachment: fixed;
+}
+
+.contenedor {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--fuente-titulos);
+    color: var(--color-primario);
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.seccion {
+    padding: 4rem 0;
+}
+
+.seccion-oscura {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+}
+
+.seccion-oscura h2 {
+    color: var(--color-blanco);
+}
+
+/* --- Header y Navegación (Mejora 2: Transparencia) --- */
+.header {
+    background-color: rgba(255, 255, 255, 0.95); /* Transparente al 90% */
+    backdrop-filter: blur(10px); /* Efecto vidrio */
+    padding: 0.5rem 0; /* Un poco más delgado para verse moderno */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky; /* Se mantiene pegajoso */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-enlace {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px; /* Ajuste para header más delgado */
+    height: 90px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-enlace:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.logo-img {
+    max-height: 70px;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu li a {
+    padding: 1rem;
+    text-decoration: none;
+    color: var(--color-primario);
+    font-weight: 700;
+    transition: color 0.3s ease;
+    position: relative; /* Agregado para la barra */
+}
+
+.nav-menu li a:hover {
+    color: var(--color-secundario);
+}
+
+.nav-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--color-primario);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* AJUSTE BARRA ACTIVA (Compatible con Astro) */
+.nav-menu a.active {
+    color: var(--color-acento);
+}
+.nav-menu a.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 5px;
+    left: 0;
+    background-color: var(--color-acento);
+}
+
+/* --- Sección Hero (Página de Inicio) --- */
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/hero-bg.webp');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--color-blanco);
+}
+
+.hero-contenido h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-blanco);
+}
+
+.hero-contenido p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+}
+
+.hero-contenido .cita-hero {
+    display: block;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    font-style: italic;
+    opacity: 0.9;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Botones --- */
+.boton {
+    background-color: var(--color-acento);
+    color: var(--color-texto);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700;
+    font-family: var(--fuente-titulos);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.boton:hover {
+    background-color: #ffda6a;
+    transform: translateY(-3px);
+}
+
+.boton-secundario {
+    background-color: var(--color-secundario);
+    color: var(--color-blanco);
+    padding: 0.7rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.boton-secundario:hover {
+    background-color: var(--color-primario);
+}
+
+/* --- Tarjetas (Generales para Oferta y Noticias) --- */
+.tarjetas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.tarjeta, .tarjeta-noticia {
+    background-color: var(--color-blanco);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta:hover, .tarjeta-noticia:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta img, .tarjeta-noticia img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.tarjeta-contenido {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-contenido h3 {
+    margin-bottom: 0.5rem;
+}
+
+.tarjeta-contenido a {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.tarjeta-noticia .fecha {
+    font-size: 0.9rem;
+    color: var(--color-secundario);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.tarjeta-noticia h4 {
+    margin-bottom: 0.5rem;
+}
+
+/* Enlace completo en tarjeta noticia */
+.tarjeta-enlace {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+/* --- Sección Bienvenida (Página de Inicio) --- */
+.bienvenida-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.bienvenida-texto h2 {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.bienvenida-texto p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.bienvenida-imagen img {
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.15);
+}
+
+/* --- Sección Contacto --- */
+.grid-contacto-index {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    align-items: start;
+}
+
+.info-contacto h4, .formulario-contacto h4, .mapa-contacto-index h4 {
+    color: var(--color-blanco);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-acento);
+}
+
+.info-contacto p {
+    display: flex;
+    align-items: flex-start;
+    margin: 1.5rem 0;
+    line-height: 1.8;
+}
+
+.info-contacto i {
+    color: var(--color-acento);
+    margin-right: 15px;
+    width: 20px;
+    margin-top: 5px;
+}
+
+/* === ARREGLO DE TELÉFONOS (NUEVO) === */
+.info-contacto ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.info-contacto ul li {
+    margin-bottom: 5px;
+}
+/* ===================================== */
+
+.formulario-contacto {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-contacto input, .formulario-contacto textarea {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    font-family: var(--fuente-cuerpo);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-blanco);
+}
+
+.formulario-contacto input::placeholder, .formulario-contacto textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.mapa-contacto-index iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    border: 0;
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: #222;
+    color: var(--color-blanco);
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.redes-sociales a {
+    color: var(--color-blanco);
+    margin: 0 10px;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.redes-sociales a:hover {
+    color: var(--color-acento);
+}
+
+/* --- Estilos Páginas Interiores --- */
+.hero-secundario {
+    background-color: var(--color-primario);
+    padding: 4rem 0;
+    text-align: center;
+    color: var(--color-blanco);
+}
+
+.hero-secundario h1 {
+    color: var(--color-blanco);
+    font-size: 3rem;
+}
+
+.mision-vision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.mision, .vision {
+    background-color: var(--color-blanco);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 51, 102, 0.1);
+    border-top: 4px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-top-color 0.3s ease;
+    position: relative;
+    top: 0;
+}
+
+.mision:hover, .vision:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 51, 102, 0.15);
+    border-top-color: var(--color-acento);
+}
+
+.mision h3, .vision h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.mision i, .vision i {
+    color: var(--color-secundario);
+    margin-right: 10px;
+}
+
+.tarjeta-valor {
+    background-color: var(--color-fondo-claro);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-valor:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 51, 102, 0.1);
+}
+
+.tarjeta-valor i {
+    font-size: 3rem;
+    color: var(--color-secundario);
+    margin-bottom: 1.5rem;
+}
+
+.tarjeta-valor h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.foto-grupal {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.foto-grupal img {
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.15);
+    width: 100%;
+}
+
+.mencion-directora {
+    text-align: center;
+    border-top: 2px solid var(--color-fondo-claro);
+    padding-top: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.mencion-directora h3 {
+    font-size: 1.5rem;
+    color: var(--color-secundario);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.mencion-directora .nombre-directora {
+    font-family: var(--fuente-titulos);
+    font-size: 2.2rem;
+    color: var(--color-primario);
+    margin: 0;
+}
+
+.proceso-linea-tiempo {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.proceso-paso {
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.proceso-paso:nth-child(odd), .proceso-paso:nth-child(even) {
+    left: 0;
+    text-align: left;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.proceso-numero {
+    position: static;
+    transform: none;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    border-radius: 50%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: var(--fuente-titulos);
+    border: 3px solid var(--color-blanco);
+    box-shadow: 0 0 0 4px var(--color-primario);
+}
+
+.proceso-paso:nth-child(odd) .proceso-numero, .proceso-paso:nth-child(even) .proceso-numero {
+    right: auto;
+    left: auto;
+}
+
+.requisitos-grid ul {
+    list-style: none;
+    padding: 0;
+    column-count: 2;
+    column-gap: 2rem;
+}
+
+.requisitos-grid ul li {
+    color: var(--color-blanco);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.requisitos-grid ul li i {
+    color: var(--color-acento);
+    margin-right: 10px;
+}
+
+.subtitulo-seccion {
+    text-align: center;
+    max-width: 700px;
+    margin: -1rem auto 2rem auto;
+    font-size: 1.1rem;
+}
+
+.formulario-contacto-grande {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-full {
+    grid-column: 1 / -1;
+}
+
+.form-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-primario);
+    margin-top: 1rem;
+    margin-bottom: 0;
+    border-bottom: 2px solid var(--color-acento);
+    padding-bottom: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.formulario-contacto-grande input,
+.formulario-contacto-grande textarea,
+.formulario-contacto-grande select {
+    padding: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: var(--fuente-cuerpo);
+    font-size: 1rem;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formulario-contacto-grande input:focus,
+.formulario-contacto-grande textarea:focus,
+.formulario-contacto-grande select:focus {
+    outline: none;
+    border-color: var(--color-secundario);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.formulario-contacto-grande .boton {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.tarjeta-valor p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* === ARREGLOS DE GALERÍA (NUEVO) === */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.galeria-noticia { /* Estilo para las noticias .md */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.galeria-item, .galeria-noticia img {
+    cursor: pointer;
+}
+
+.galeria-item img, .galeria-noticia img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.galeria-item img:hover, .galeria-noticia img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Corrección Centrado LightGallery */
+.lg-outer .lg-img-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+}
+.lg-outer .lg-object {
+    max-height: 90vh !important;
+    margin: auto !important;
+}
+/* ==================================== */
+
+.cta-seccion {
+    text-align: center;
+}
+
+.cta-seccion h2 {
+    color: var(--color-blanco);
+}
+
+.cta-seccion p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.contenedor-articulo {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.articulo-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.articulo-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.articulo-meta {
+    font-size: 1rem;
+    color: #777;
+    font-weight: 700;
+}
+
+.articulo-imagen-destacada {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+/* Estilo Letra Capital en Noticias */
+.texto-articulo p:first-of-type::first-letter {
+    float: left;
+    font-size: 3.5rem;
+    line-height: 0.8;
+    padding-right: 12px;
+    padding-top: 4px;
+    color: var(--color-primario);
+    font-weight: bold;
+    font-family: var(--fuente-elegante);
+}
+
+.articulo-cuerpo p, .texto-articulo p {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    line-height: 2;
+    margin-bottom: 1.5rem;
+    color: #444;
+}
+
+.articulo-cuerpo h3 {
+    font-size: 1.8rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.articulo-cuerpo .galeria-titulo {
+    text-align: center;
+}
+
+.boton-volver {
+    display: inline-block;
+    margin-top: 2rem;
+    margin-right: 1rem;
+}
+
+.video-responsive-contenedor {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    margin: 2rem 0;
+    border-radius: 10px;
+}
+
+.video-responsive-contenedor iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.info-detallada h2 {
+    margin-bottom: 2rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.info-item i {
+    font-size: 1.8rem;
+    color: var(--color-secundario);
+    margin-right: 1.5rem;
+    margin-top: 5px;
+    width: 30px;
+    text-align: center;
+}
+
+.info-item h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.3rem;
+}
+
+.info-item p {
+    margin: 0;
+    line-height: 1.7;
+    color: #555;
+}
+
+.mapa-contenedor iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+    border-radius: 10px;
+    border: 0;
+}
+
+.info-contacto a, .info-item a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.info-contacto a:hover, .info-item a:hover {
+    color: var(--color-acento);
+    text-decoration: underline;
+}
+
+#btn-volver-arriba {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 999;
+    border: none;
+    outline: none;
+    background-color: var(--color-secundario);
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+}
+
+#btn-volver-arriba:hover {
+    opacity: 0.8;
+}
+
+#btn-volver-arriba.show {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* =================================================================
+   CORRECCIONES FINALES (PEGAR AL FINAL DEL ARCHIVO)
+   ================================================================= */
+
+/* 1. ARREGLAR LISTA DE TELÉFONOS (Para que no se vean pegados) */
+.info-contacto ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.info-contacto li {
+    margin-bottom: 8px !important;
+    display: block !important;
+}
+.info-contacto a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* 2. ARREGLAR ALINEACIÓN DE TARJETAS (Botones siempre abajo) */
+.tarjeta, .tarjeta-noticia {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+.tarjeta-contenido {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+.tarjeta-contenido a {
+    margin-top: auto !important;
+    align-self: flex-start !important;
+}
+
+/* 3. ARREGLAR GALERÍA DE NOTICIAS (Grid ordenado) */
+.galeria-noticia {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 1.5rem !important;
+    margin: 2rem 0 !important;
+    width: 100% !important;
+}
+.galeria-noticia img {
+    width: 100% !important;
+    height: 250px !important;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+    cursor: zoom-in !important;
+}
+
+/* 4. ARREGLAR GALERÍA PANTALLA COMPLETA (Fotos centradas) */
+.lg-outer .lg-img-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+}
+.lg-outer .lg-object {
+    max-height: 90vh !important;
+    max-width: 90vw !important;
+    margin: auto !important;
+}
+
+/* 5. ARREGLAR BOTÓN SUBIR (Que no tape el Facebook) */
+#btn-volver-arriba {
+    bottom: 90px !important;
+    z-index: 9999 !important;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--color-fondo-claro);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .nav-menu.nav-menu--visible {
+        transform: translateX(0);
+    }
+
+    .nav-menu li {
+        margin: 1rem 0;
+    }
+
+    .nav-menu li a {
+        font-size: 1.2rem;
+    }
+
+    .header {
+        padding: 0.5rem 0;
+    }
+
+    .logo-enlace {
+        width: 90px;
+        height: 90px;
+    }
+
+    .logo-img {
+        max-height: 70px;
+    }
+
+    .hero-contenido h1 {
+        font-size: 2.5rem;
+    }
+
+    .bienvenida-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .bienvenida-texto h2 {
+        text-align: center;
+    }
+
+    .footer-contenido {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .redes-sociales {
+        margin-top: 1rem;
+    }
+
+    .mision-vision-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .proceso-paso {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .requisitos-grid ul {
+        column-count: 1;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .articulo-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .contacto-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ======================================================
+   ARREGLO FINAL DE CONTACTO (Alineación y Color)
+   ====================================================== */
+
+/* 1. Estructura Flexible (Icono a la izquierda, texto a la derecha) */
+.dato-contacto {
+    display: flex;          /* Pone el icono al lado del texto */
+    align-items: flex-start; /* Alinea arriba */
+    gap: 15px;              /* Espacio entre icono y texto */
+    margin-bottom: 1.5rem;  /* Espacio entre cada bloque */
+    color: #fff;            /* Texto blanco por defecto */
+}
+
+/* 2. Estilo de los Iconos */
+.dato-contacto i {
+    color: var(--color-secundario); /* Icono Dorado/Amarillo */
+    font-size: 1.3rem;
+    margin-top: 5px; /* Ajuste para que cuadre con el texto */
+    min-width: 20px; /* Para que todos los iconos ocupen lo mismo */
+}
+
+/* 3. Estilo de los Enlaces (Teléfonos y Correo) */
+.dato-contacto a {
+    color: #fff;            /* Blancos al inicio */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Suaviza el cambio de color */
+    font-weight: 600;       /* Un poco más gordita la letra */
+}
+
+/* 4. ¡EL EFECTO HOVER! (Cuando pones el puntero) */
+.dato-contacto a:hover {
+    color: var(--color-secundario); /* Se pone Dorado/Amarillo */
+    text-decoration: underline;     /* Subrayado opcional */
+}
+
+/* Ajuste para el texto que no es enlace (Dirección) */
+.texto-dato {
+    display: flex;
+    flex-direction: column;
+}
+
+/* =================================================================
+   PARCHES DE CORRECCIÓN (PEGAR AL FINAL DEL ARCHIVO)
+   ================================================================= */
+
+/* 1. ARREGLAR CONTACTOS (Alineación perfecta Icono-Texto) */
+.info-item {
+    display: flex !important;
+    gap: 15px !important;
+    margin-bottom: 1.5rem !important;
+    align-items: flex-start !important;
+}
+.info-item i {
+    color: var(--color-acento) !important; /* Icono CIAN */
+    font-size: 1.4rem !important;
+    margin-top: 4px !important;
+    min-width: 25px !important;
+    text-align: center !important;
+}
+.info-item h4 {
+    color: var(--color-acento) !important; /* Títulos CIAN */
+    margin: 0 0 0.5rem 0 !important;
+    border: none !important;
+    font-size: 1.1rem !important;
+}
+.info-item a {
+    text-decoration: none !important;
+    color: #fff !important; /* Texto blanco en fondo oscuro */
+    transition: color 0.3s !important;
+}
+.info-item a:hover, .info-contacto a:hover {
+    color: var(--color-acento) !important; /* Hover CIAN */
+}
+/* Lista de teléfonos limpia */
+.info-item ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.info-item li {
+    margin-bottom: 5px !important;
+}
+
+/* 2. ARREGLAR TARJETAS (Misma altura y botones abajo) */
+.tarjeta, .tarjeta-noticia {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+.tarjeta-contenido {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+.tarjeta-contenido a {
+    margin-top: auto !important;
+    align-self: flex-start !important;
+}
+/* Fechas en Cian */
+.tarjeta-noticia .fecha {
+    color: var(--color-acento) !important;
+}
+
+/* 3. ARREGLAR BARRA DEL MENÚ (Cian) */
+.nav-menu a.active {
+    color: var(--color-acento) !important;
+}
+.nav-menu a.active::after {
+    background-color: var(--color-acento) !important;
+}
+.nav-menu li a:hover {
+    color: var(--color-acento) !important;
+}
+
+/* 4. BOTONES (Cian con texto blanco) */
+.boton {
+    background-color: var(--color-acento) !important;
+    color: #fff !important;
+}
+.boton:hover {
+    background-color: #008ecc !important; /* Un poco más oscuro al hover */
+}
+
+/* 5. GALERÍA DE NOTICIAS (Grid y Zoom) */
+.galeria-noticia {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    margin: 2rem 0 !important;
+}
+.galeria-noticia img {
+    width: 100% !important;
+    height: 250px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    cursor: zoom-in !important;
+    aspect-ratio: 16/9 !important;
+}
+
+/* 6. CORRECCIÓN LIGHTGALLERY (Centrado) */
+.lg-outer .lg-img-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+}
+.lg-outer .lg-object {
+    max-height: 90vh !important;
+    max-width: 90vw !important;
+    margin: auto !important;
+}
+
+/* =======================================================
+   CORRECCIÓN INTELIGENTE DE COLORES (Texto Contacto)
+   ======================================================= */
+
+/* CASO 1: En el Inicio (Fondo Oscuro) -> Texto Blanco */
+.info-contacto .info-item p, 
+.info-contacto .info-item a {
+    color: #ffffff !important;
+    margin: 0;
+}
+
+/* CASO 2: En página Contacto (Fondo Claro) -> Texto Oscuro */
+.info-detallada .info-item p, 
+.info-detallada .info-item a {
+    color: #333333 !important; /* Gris oscuro para leerse bien */
+    margin: 0;
+}
+
+/* Regla común: Al pasar el mouse, los enlaces se ponen Cian */
+.info-item a:hover {
+    color: var(--color-acento) !important;
+}
+
+/* =======================================================
+   CORRECCIÓN FINAL: ALINEACIÓN DEL MAPA
+   ======================================================= */
+
+/* 1. Aseguramos que el contenedor sea de 2 columnas */
+.grid-contacto-index {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 3rem !important;
+    align-items: start !important;
+}
+
+/* 2. MAGIA: Hacemos que el mapa ocupe TODO el ancho abajo */
+.mapa-contacto-index {
+    grid-column: 1 / -1 !important; /* Expande de principio a fin */
+    width: 100% !important;
+    margin-top: 2rem !important;
+}
+
+/* 3. Aseguramos que el mapa se vea bien dentro */
+.mapa-contacto-index iframe {
+    width: 100% !important;
+    height: 250px !important; /* Un poco más alto para que luzca */
+    border-radius: 10px !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+}
+
+/* Ajuste para móviles (Volver a 1 columna normal) */
+@media (max-width: 768px) {
+    .grid-contacto-index {
+        grid-template-columns: 1fr !important;
+    }
+    .mapa-contacto-index {
+        grid-column: auto !important;
+    }
+}
