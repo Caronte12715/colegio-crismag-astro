@@ -1172,22 +1172,42 @@ img {
     background-color: #008ecc !important; /* Un poco más oscuro al hover */
 }
 
-/* 5. GALERÍA DE NOTICIAS (Grid y Zoom) */
+/* 5. GALERÍA DE NOTICIAS (Masonry Grid Estilo Pinterest) */
 .galeria-noticia {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-    gap: 1rem !important;
+    column-count: 1 !important;
+    column-gap: 1rem !important;
     width: 100% !important;
     margin: 2rem 0 !important;
 }
+
+@media (min-width: 600px) {
+    .galeria-noticia {
+        column-count: 2 !important;
+    }
+}
+
+@media (min-width: 900px) {
+    .galeria-noticia {
+        column-count: 3 !important;
+    }
+}
+
 .galeria-noticia img {
     width: 100% !important;
-    height: 250px !important;
-    object-fit: cover !important;
-    border-radius: 8px !important;
+    height: auto !important;
+    margin-bottom: 1rem !important;
+    display: inline-block !important;
+    border-radius: 12px !important;
     cursor: zoom-in !important;
-    aspect-ratio: 16/9 !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s !important;
 }
+
+.galeria-noticia img:hover {
+    transform: scale(1.03) !important;
+    filter: brightness(1.05) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
 
 /* 6. CORRECCIÓN LIGHTGALLERY (Centrado) */
 .lg-outer .lg-img-wrap {
