@@ -2,8 +2,8 @@
 layout: ../../layouts/NoticiaLayout.astro
 title: "Primera Reunión General: Alianza Familia y Colegio 2026"
 date: "2026-02-07"
-image: "/images/reunion-portada.jpg"
-banner: "/images/reunion-banner.jpg"
+image: "/images/primera-reunion-portada.jpg"
+banner: "/images/primera-reunion-banner.jpg"
 description: "Con éxito se llevó a cabo el primer encuentro de padres de familia, sentando las bases de disciplina y compromiso para el nuevo año escolar."
 ---
 
@@ -38,8 +38,8 @@ Este 2026 viene cargado de retos y nuevas metas. Agradecemos profundamente a cad
 ## Galería del Encuentro
 
 <div class="galeria-noticia">
-    <img src="/images/reunion-foto1.jpg" alt="Bienvenidos">
-    <img src="/images/reunion-foto2.jpg" alt="Asamblea general">
-    <img src="/images/reunion-foto3.jpg" alt="Trabajo en el aula">
-    <img src="/images/reunion-foto4.jpg" alt="Padres de familia">
+    <img src="/images/reunion-padres-1.jpg" alt="Bienvenidos">
+    <img src="/images/reunion-padres-2.jpg" alt="Asamblea general">
+    <img src="/images/reunion-padres-3.jpg" alt="Trabajo en el aula">
+    <img src="/images/reunion-padres-4.jpg" alt="Padres de familia">
 </div>
