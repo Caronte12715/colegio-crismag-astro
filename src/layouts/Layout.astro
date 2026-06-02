@@ -44,7 +44,15 @@ const currentPath = pathname.slice(1);
         // REEMPLAZA ESTO CON TU CÓDIGO REAL QUE EMPIEZA CON G-
         gtag('config', 'G-LDY65Y2R9Q');
     </script>
-</head>
+    <script is:inline>
+        // Prevenir parpadeo del tema oscuro (FOUC)
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
 </head>
 <body>
     
@@ -66,6 +74,11 @@ const currentPath = pathname.slice(1);
                 <li><a href="/#oferta-educativa">Oferta Educativa</a></li>
                 <li><a href="/noticias" class={currentPath.startsWith("noticias") ? "active" : ""}>Noticias</a></li>
                 <li><a href="/contacto" class={currentPath.startsWith("contacto") ? "active" : ""}>Contacto</a></li>
+                <li>
+                    <button id="theme-toggle" aria-label="Cambiar tema" style="background:none; border:none; color:var(--color-primario); font-size:1.2rem; cursor:pointer; padding: 1rem; transition: color 0.3s;">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
             </ul>
         </nav>
     </header>
@@ -89,6 +102,35 @@ const currentPath = pathname.slice(1);
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"></script>
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.min.js"></script>
     <script is:inline src="/main.js"></script>
+
+    <script is:inline>
+        // Lógica del botón de Modo Oscuro
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
+            
+            const updateIcon = (theme) => {
+                if (!themeIcon) return;
+                if (theme === 'dark') {
+                    themeIcon.className = 'fas fa-sun';
+                } else {
+                    themeIcon.className = 'fas fa-moon';
+                }
+            };
+
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            updateIcon(currentTheme);
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                    updateIcon(theme);
+                });
+            }
+        });
+    </script>
     
     <div id="aviso-clases" class="aviso-flotante">
     <button class="cerrar-aviso" onclick="document.getElementById('aviso-clases').style.display='none'">×</button>

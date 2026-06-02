@@ -7,11 +7,38 @@
     --color-secundario: #003366;
     --color-acento: #00A8E8;
     --color-texto: #333;
+    --color-texto-secundario: #555;
     --color-blanco: #fff;
     --color-fondo-claro: #f8f9fa;
+    --color-fondo-pagina: #ffffff;
+    --bg-puntos: rgba(0, 51, 102, 0.15);
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --tarjeta-bg: #fff;
+    --tarjeta-shadow: rgba(0, 0, 0, 0.1);
+    --tarjeta-shadow-hover: rgba(0, 0, 0, 0.15);
+    --color-borde: #e0e0e0;
+    --color-footer: #222;
     --fuente-titulos: 'Nunito', sans-serif;
     --fuente-cuerpo: 'Nunito Sans', sans-serif;
-    --fuente-elegante: 'Lora', serif; /* Agregado para noticias */
+    --fuente-elegante: 'Lora', serif;
+}
+
+[data-theme="dark"] {
+    --color-primario: #60a5fa; /* Azul claro para destacar en oscuro */
+    --color-secundario: #93c5fd;
+    --color-acento: #38bdf8;
+    --color-texto: #f8fafc;
+    --color-texto-secundario: #cbd5e1;
+    --color-blanco: #ffffff; /* Restaurado a blanco puro para textos */
+    --color-fondo-claro: #0f172a;
+    --color-fondo-pagina: #111827;
+    --bg-puntos: rgba(255, 255, 255, 0.05);
+    --header-bg: rgba(17, 24, 39, 0.95);
+    --tarjeta-bg: #1f2937;
+    --tarjeta-shadow: rgba(0, 0, 0, 0.4);
+    --tarjeta-shadow-hover: rgba(0, 0, 0, 0.6);
+    --color-borde: #374151;
+    --color-footer: #030712;
 }
 
 html {
@@ -30,9 +57,9 @@ body {
     margin: 0;
 
 
-    background-color: #ffffff;
-    /* Puntos azules sutiles (Color primario con transparencia) */
-    background-image: radial-gradient(rgba(0, 51, 102, 0.15) 1.5px, transparent 1.5px);
+    background-color: var(--color-fondo-pagina);
+    /* Puntos sutiles (Color primario con transparencia) */
+    background-image: radial-gradient(var(--bg-puntos) 1.5px, transparent 1.5px);
     /* Separación de los puntos */
     background-size: 20px 20px;
     /* Para que el fondo no se mueva al hacer scroll (Efecto elegante) */
@@ -77,7 +104,7 @@ img {
 
 /* --- Header y Navegación (Mejora 2: Transparencia) --- */
 .header {
-    background-color: rgba(255, 255, 255, 0.95); /* Transparente al 90% */
+    background-color: var(--header-bg); /* Variable con transparencia */
     backdrop-filter: blur(10px); /* Efecto vidrio */
     padding: 0.5rem 0; /* Un poco más delgado para verse moderno */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -237,9 +264,9 @@ img {
 }
 
 .tarjeta, .tarjeta-noticia {
-    background-color: var(--color-blanco);
+    background-color: var(--tarjeta-bg);
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px var(--tarjeta-shadow);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -248,7 +275,7 @@ img {
 
 .tarjeta:hover, .tarjeta-noticia:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px var(--tarjeta-shadow-hover);
 }
 
 .tarjeta img, .tarjeta-noticia img {
@@ -307,7 +334,7 @@ img {
 
 .bienvenida-texto p {
     font-size: 1.1rem;
-    color: #555;
+    color: var(--color-texto-secundario);
     margin-bottom: 1.5rem;
 }
 
@@ -384,7 +411,7 @@ img {
 
 /* --- Footer --- */
 .footer {
-    background-color: #222;
+    background-color: var(--color-footer);
     color: var(--color-blanco);
     padding: 2rem 0;
     text-align: center;
@@ -430,10 +457,10 @@ img {
 }
 
 .mision, .vision {
-    background-color: var(--color-blanco);
+    background-color: var(--tarjeta-bg);
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 5px 25px rgba(0, 51, 102, 0.1);
+    box-shadow: 0 5px 25px var(--tarjeta-shadow);
     border-top: 4px solid transparent;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-top-color 0.3s ease;
     position: relative;
@@ -457,11 +484,11 @@ img {
 }
 
 .tarjeta-valor {
-    background-color: var(--color-fondo-claro);
+    background-color: var(--tarjeta-bg);
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--color-borde);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -617,7 +644,7 @@ img {
 .form-group label {
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: #555;
+    color: var(--color-texto-secundario);
     font-size: 0.9rem;
 }
 
@@ -625,7 +652,9 @@ img {
 .formulario-contacto-grande textarea,
 .formulario-contacto-grande select {
     padding: 0.9rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-borde);
+    background-color: var(--tarjeta-bg);
+    color: var(--color-texto);
     border-radius: 5px;
     font-family: var(--fuente-cuerpo);
     font-size: 1rem;
@@ -649,7 +678,7 @@ img {
 }
 
 .tarjeta-valor p {
-    color: #555;
+    color: var(--color-texto-secundario);
     font-size: 0.95rem;
     line-height: 1.5;
 }
@@ -728,7 +757,7 @@ img {
 
 .articulo-meta {
     font-size: 1rem;
-    color: #777;
+    color: var(--color-texto-secundario);
     font-weight: 700;
 }
 
@@ -758,7 +787,7 @@ img {
     font-size: 1.2rem;
     line-height: 2;
     margin-bottom: 1.5rem;
-    color: #444;
+    color: var(--color-texto-secundario);
 }
 
 .articulo-cuerpo h3 {
