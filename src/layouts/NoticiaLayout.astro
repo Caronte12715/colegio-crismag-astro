@@ -54,20 +54,28 @@ const formatearFecha = (fecha: any) => {
         const galeria = document.querySelector('.galeria-noticia');
         
         if (galeria) {
-            // Aplicar Lazy Loading a las fotos de la galería
             const imagenes = galeria.querySelectorAll('img');
             imagenes.forEach(img => {
-                img.setAttribute('loading', 'lazy'); // Carga diferida
+                const src = img.getAttribute('src');
+                
+                // Envolver la imagen en un <a> para que LightGallery funcione perfectamente
+                const a = document.createElement('a');
+                a.href = src;
+                a.className = 'lg-item';
+                
+                // Insertar el <a> y meter la imagen adentro
+                img.parentNode.insertBefore(a, img);
+                a.appendChild(img);
+                
+                img.setAttribute('loading', 'lazy');
                 img.setAttribute('decoding', 'async');
                 img.style.cursor = 'zoom-in';
-                img.setAttribute('data-src', img.src);
-                img.setAttribute('data-thumb', img.src);
             });
 
             // Iniciar LightGallery
             if (window.lightGallery) {
                 window.lightGallery(galeria, {
-                    selector: 'img',
+                    selector: '.lg-item',
                     speed: 500,
                     download: false,
                     plugins: [lgZoom, lgThumbnail],
