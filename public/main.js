@@ -23,7 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
         lightGallery(gallery, {
             selector: '.galeria-item',
             speed: 500,
-            download: false
+            download: false,
+            getCaptionFromTitleOrAlt: false,
+            plugins: [lgZoom, lgThumbnail],
+            mobileSettings: {
+                controls: false,
+                showCloseIcon: true,
+                download: false
+            }
         });
     }
 
