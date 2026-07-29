@@ -98,6 +98,10 @@ img {
     color: var(--color-blanco);
 }
 
+[data-theme="dark"] .seccion-oscura {
+    background-color: #1e293b; /* Fondo oscuro específico para mantener el contraste en modo oscuro */
+}
+
 .seccion-oscura h2 {
     color: var(--color-blanco);
 }
@@ -1266,7 +1270,7 @@ img {
 /* CASO 2: En página Contacto (Fondo Claro) -> Texto Oscuro */
 .info-detallada .info-item p, 
 .info-detallada .info-item a {
-    color: #333333 !important; /* Gris oscuro para leerse bien */
+    color: var(--color-texto) !important; /* Adaptable a claro/oscuro */
     margin: 0;
 }
 
