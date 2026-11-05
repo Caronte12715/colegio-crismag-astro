@@ -1,43 +1,54 @@
-# Astro Starter Kit: Minimal
+# Colegio Crismag — Sitio web institucional
 
-```sh
-npm create astro@latest -- --template minimal
+Sitio web del **Colegio Cristiano Profa. Martha Garay de Castillo (Crismag)**, ubicado en San Miguel, El Salvador.
+
+**Sitio web:** https://colegiocrismag.com
+
+## ¿Qué incluye?
+
+- Presentación del colegio, su filosofía y su oferta educativa.
+- Secciones para parvularia, ciclos educativos y bachillerato.
+- Noticias y eventos cargados desde archivos Markdown y ordenados por fecha.
+- Información de contacto, formulario de consultas y mapa de ubicación.
+- Páginas organizadas mediante Astro y una plantilla de diseño compartida.
+
+## Tecnologías
+
+- **Astro 5** para la construcción del sitio.
+- **HTML y CSS** para estructura y presentación.
+- **Markdown** para contenido de noticias.
+- **@astrojs/sitemap** para generar el mapa del sitio.
+- **Sharp** como dependencia de desarrollo para el procesamiento de imágenes.
+
+## Ejecutar localmente
+
+Requisitos: Node.js y npm compatibles con la versión de Astro del proyecto.
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Abrir la dirección local que muestre la terminal (habitualmente `http://localhost:4321`).
 
-## 🚀 Project Structure
+Para generar y revisar la versión de producción:
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build
+npm run preview
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+**Nota:** el comando de compilación ejecuta previamente `scripts/compress-images.js` para procesar imágenes.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Organización general
 
-Any static assets, like images, can be placed in the `public/` directory.
+- `src/pages/`: páginas y noticias del sitio.
+- `src/layouts/`: plantillas compartidas.
+- `public/`: recursos estáticos.
+- `scripts/`: tareas auxiliares del proyecto.
 
-## 🧞 Commands
+## Sobre el proyecto
 
-All commands are run from the root of the project, from a terminal:
+Este repositorio forma parte del portafolio de desarrollo web de David Guevara. Se utilizan herramientas de inteligencia artificial como apoyo para tareas de implementación, revisión y resolución de problemas.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+> La información institucional y los datos de contacto del sitio pertenecen al colegio. Para cambios de contenido, verificar previamente su vigencia.
